@@ -10,7 +10,7 @@ import ImageCard from "../components/cards/ImageCard";
 import SkillsTableCard from "../components/cards/SkillsTableCard";
 
 import {
-  AboutSubtitle,
+  InfoSubtitle,
   AboutDescription,
   AboutBio,
 } from "../components/Typography";
@@ -77,7 +77,7 @@ export default function AboutSection() {
         <AboutInformationItem>
           <AboutNameAndBioContainer>
             <AboutNameAndDescriptionContainer>
-              <AboutSubtitle>{userData && userData.name}</AboutSubtitle>
+              <InfoSubtitle>{userData && userData.name}</InfoSubtitle>
               <AboutDescription>
                 {userData && userData.location}
               </AboutDescription>
@@ -90,7 +90,7 @@ export default function AboutSection() {
           </AboutNameAndBioContainer>
         </AboutInformationItem>
         <AboutInformationFullWidthItem>
-          <AboutSubtitle>Technical Skills</AboutSubtitle>
+          <InfoSubtitle>Technical Skills</InfoSubtitle>
           <SkillsTableCard />
         </AboutInformationFullWidthItem>
       </AboutInformationPanel>
