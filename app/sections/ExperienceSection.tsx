@@ -11,7 +11,7 @@ export default function ExperienceSection() {
   const userData: IUserData | null = useUserDataContext();
 
   return (
-    <SectionContainer id="experience">
+    <SectionContainer id="experience" style={{ marginTop: "200px" }}>
       <SectionTitle>Experience</SectionTitle>
     </SectionContainer>
   );

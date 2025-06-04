@@ -17,3 +17,17 @@ body {
   color: white;
   scroll-behavior: smooth;
 }
+
+:root {
+  --black: #000000;
+  --bblue: #04080d;
+  --dblue: #1b263b;
+  --dblue2: #111824;
+  --mblue: #415a77;
+  --lblue: #778da9;
+  --grey: #e0e1dd;
+  --txtgrey: #c7c8c5;
+  --dgrey: #152130;
+  --secondary: #ec2d47;
+  --dsecondary: #9e2030;
+}

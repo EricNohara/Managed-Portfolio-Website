@@ -4,6 +4,7 @@ import styled from "styled-components";
 import { useUserDataContext } from "../context/UserDataProvider";
 import { IUserData } from "../interfaces/IUserData";
 import Link from "next/link";
+import React, { useEffect, useState } from "react";
 
 const NavBar = styled.nav`
   display: flex;

@@ -1,16 +1,29 @@
 import styled from "styled-components";
 
-const HomeSectionText = styled.p`
+export const HomeSectionText = styled.p`
   font-size: 3rem;
 `;
 
-const HomeSectionNameText = styled.span`
+export const HomeSectionNameText = styled.span`
   color: red;
 `;
 
-const SectionTitleText = styled.p`
+export const SectionTitleText = styled.h1`
   font-size: 4rem;
   text-transform: uppercase;
 `;
 
-export { HomeSectionText, HomeSectionNameText, SectionTitleText };
+export const AboutSubtitle = styled.h2`
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+`;
+
+export const AboutDescription = styled.h3`
+  font-size: 1.25rem;
+`;
+
+export const AboutBio = styled.p`
+  padding: 5%;
+  background-color: var(--dblue2);
+  border-radius: 10px;
+`;
