@@ -28,13 +28,12 @@ const NavListItem = styled.li`
   font-size: 1.25rem;
 `;
 
-const NavLink = styled(Link)`
-  color: white;
+const NavLink = styled(Link)<{ $active?: boolean }>`
+  color: ${({ $active }) => ($active ? "red" : "white")};
   transition: color 0.2s ease;
 
   &:hover {
     color: red;
-    transition: color 0.2s ease;
   }
 `;
 
@@ -45,32 +44,62 @@ const ExternalNavLink = styled.a`
 
   &:hover {
     color: red;
-    transition: color 0.2s ease;
   }
 `;
 
 export default function Navigation() {
   const userData: IUserData | null = useUserDataContext();
+  const [activeSection, setActiveSection] = useState<string>("home");
 
-  console.log(userData?.resume_url);
+  useEffect(() => {
+    const sectionIds = ["home", "about", "experience", "projects", "contact"];
+    const sections = sectionIds
+      .map((id) => document.getElementById(id))
+      .filter(Boolean) as HTMLElement[];
+
+    const observer = new window.IntersectionObserver(
+      (entries) => {
+        const visible = entries
+          .filter((entry) => entry.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
+        if (visible.length > 0) {
+          setActiveSection(visible[0].target.id);
+        }
+      },
+      { threshold: 0.5 }
+    );
+
+    sections.forEach((section) => observer.observe(section));
+    return () => observer.disconnect();
+  }, []);
 
   return (
     <NavBar>
       <NavList>
         <NavListItem>
-          <NavLink href="#home">Home</NavLink>
+          <NavLink href="#home" $active={activeSection === "home"}>
+            Home
+          </NavLink>
         </NavListItem>
         <NavListItem>
-          <NavLink href="#about">About</NavLink>
+          <NavLink href="#about" $active={activeSection === "about"}>
+            About
+          </NavLink>
         </NavListItem>
         <NavListItem>
-          <NavLink href="#experience">Experience</NavLink>
+          <NavLink href="#experience" $active={activeSection === "experience"}>
+            Experience
+          </NavLink>
         </NavListItem>
         <NavListItem>
-          <NavLink href="#projects">Projects</NavLink>
+          <NavLink href="#projects" $active={activeSection === "projects"}>
+            Projects
+          </NavLink>
         </NavListItem>
         <NavListItem>
-          <NavLink href="#contact">Contact</NavLink>
+          <NavLink href="#contact" $active={activeSection === "contact"}>
+            Contact
+          </NavLink>
         </NavListItem>
         {userData && userData.resume_url && (
           <NavListItem>
