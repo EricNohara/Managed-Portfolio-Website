@@ -1,16 +1,16 @@
 import styled from "styled-components";
-import { OutlinedButton } from "../components/Buttons";
+import { ScrollButton } from "../components/Buttons";
 import { SocialIconLink } from "../components/Icon";
 import { useUserDataContext } from "../context/UserDataProvider";
 import { IUserData } from "../interfaces/IUserData";
+import { ExternalLink } from "../components/Links";
+import { SectionContainer } from "../components/Containers";
+import { HomeSectionText, HomeSectionNameText } from "../components/Typography";
 
-const HomeSectionContainer = styled.div`
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-`;
+import LinkedInIcon from "@mui/icons-material/LinkedIn";
+import GitHubIcon from "@mui/icons-material/GitHub";
+import InstagramIcon from "@mui/icons-material/Instagram";
+import EmailIcon from "@mui/icons-material/Email";
 
 const HomeSectionTextContainer = styled.div`
   display: flex;
@@ -19,14 +19,6 @@ const HomeSectionTextContainer = styled.div`
   justify-content: center;
   margin-bottom: 2%;
   margin-top: 15%;
-`;
-
-const HomeSectionText = styled.p`
-  font-size: 3rem;
-`;
-
-const HomeSectionNameText = styled.span`
-  color: red;
 `;
 
 const HomeSectionIconsContainer = styled.div`
@@ -38,28 +30,54 @@ const HomeSectionIconsContainer = styled.div`
 `;
 
 const socialLinks = [
-  { key: "linkedin_url", label: "LinkedIn", icon: <>LinkedIn Icon</> },
-  { key: "github_url", label: "GitHub", icon: <>GitHub Icon</> },
-  { key: "instagram_url", label: "Instagram", icon: <>Instagram Icon</> },
-  { key: "email", label: "Email", icon: <>Email Icon</> },
+  {
+    key: "linkedin_url",
+    label: "LinkedIn",
+    icon: <LinkedInIcon sx={{ fontSize: "3.25rem" }} />,
+  },
+  {
+    key: "github_url",
+    label: "GitHub",
+    icon: <GitHubIcon sx={{ fontSize: "3.25rem" }} />,
+  },
+  {
+    key: "instagram_url",
+    label: "Instagram",
+    icon: <InstagramIcon sx={{ fontSize: "3.25rem" }} />,
+  },
+  {
+    key: "email",
+    label: "Email",
+    icon: <EmailIcon sx={{ fontSize: "3.25rem" }} />,
+  },
 ];
 
 export default function HomeSection() {
   const userData: IUserData | null = useUserDataContext();
 
   return (
-    <HomeSectionContainer>
+    <SectionContainer id="home">
       <HomeSectionTextContainer>
         {userData && userData.name && (
           <HomeSectionText>
-            Hey I'm <HomeSectionNameText>{userData.name}</HomeSectionNameText>
+            Hey I'm{" "}
+            <HomeSectionNameText>
+              {userData.linkedin_url ? (
+                <ExternalLink href={userData.linkedin_url}>
+                  {userData.name}
+                </ExternalLink>
+              ) : (
+                userData.name
+              )}
+            </HomeSectionNameText>
+            .
           </HomeSectionText>
         )}
         <HomeSectionText>
           I'm a software developer and college student.
         </HomeSectionText>
       </HomeSectionTextContainer>
-      <OutlinedButton>Find Out More</OutlinedButton>
+      <ScrollButton targetId="about">Find Out More</ScrollButton>
       <HomeSectionIconsContainer>
         {userData &&
           socialLinks.map(
@@ -79,6 +97,6 @@ export default function HomeSection() {
               )
           )}
       </HomeSectionIconsContainer>
-    </HomeSectionContainer>
+    </SectionContainer>
   );
 }

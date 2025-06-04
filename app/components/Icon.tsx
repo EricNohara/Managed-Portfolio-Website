@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { ExternalLink } from "./Links";
 
 const Icon = styled.p`
   color: #b6c6cf;
@@ -11,8 +12,6 @@ const Icon = styled.p`
   }
 `;
 
-const IconLink = styled.a``;
-
 type SocialIconLinkProps = {
   href: string;
   label: string;
@@ -22,16 +21,11 @@ type SocialIconLinkProps = {
 function SocialIconLink({ href, label, children }: SocialIconLinkProps) {
   return (
     <Icon>
-      <IconLink
-        href={href}
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label={label}
-      >
+      <ExternalLink href={href} aria-label={label}>
         {children}
-      </IconLink>
+      </ExternalLink>
     </Icon>
   );
 }
 
-export { Icon, IconLink, SocialIconLink };
+export { Icon, SocialIconLink };

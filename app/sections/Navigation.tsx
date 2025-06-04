@@ -11,6 +11,9 @@ const NavBar = styled.nav`
   align-items: center;
   padding: 1%;
   background-color: #3d3d3d;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
 `;
 
 const NavList = styled.ul`
@@ -58,6 +61,9 @@ export default function Navigation() {
         </NavListItem>
         <NavListItem>
           <NavLink href="#about">About</NavLink>
+        </NavListItem>
+        <NavListItem>
+          <NavLink href="#experience">Experience</NavLink>
         </NavListItem>
         <NavListItem>
           <NavLink href="#projects">Projects</NavLink>
