@@ -62,7 +62,9 @@ export default function ProjectsSection() {
 
   return (
     <SectionContainer id="projects">
-      <SectionTitle>Projects</SectionTitle>
+      <SectionTitle subtitle="click project name to view details">
+        Projects
+      </SectionTitle>
       <ProjectListContainer>
         <ProjectList>
           {userData &&
