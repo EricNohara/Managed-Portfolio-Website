@@ -33,7 +33,7 @@ export interface IUserExperience {
 
 export interface IUserProject {
   name: string;
-  date_dtart: string;
+  date_start: string;
   date_end: string;
   languages_used: string[] | null;
   frameworks_used: string[] | null;

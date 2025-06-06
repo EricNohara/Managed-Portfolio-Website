@@ -41,3 +41,13 @@ export const ExperienceSectionDate = styled.h4`
 export const ExperienceSubtitle = styled.b`
   font-size: 1.2;
 `;
+
+export const ProjectTitle = styled.h2`
+  font-size: 2.5rem;
+`;
+
+export const ProjectSubtitle = styled.h4`
+  font-size: 1.1rem;
+  color: grey;
+  font-style: italic;
+`;

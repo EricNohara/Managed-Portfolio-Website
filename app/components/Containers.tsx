@@ -38,3 +38,33 @@ export const ExperiencePairContainer = styled.div`
   justify-content: space-between;
   align-items: center;
 `;
+
+export const ProjectListContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: end;
+`;
+
+export const ProjectInfoContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 0 2rem 2rem 2rem;
+  gap: 1.5rem;
+`;
+
+export const ProjectSubtitleContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  gap: 2rem;
+`;
+export const IconsContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+`;
