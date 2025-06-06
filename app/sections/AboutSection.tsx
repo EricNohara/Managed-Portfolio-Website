@@ -6,7 +6,7 @@ import { IUserData } from "../interfaces/IUserData";
 import { ExternalLink } from "../components/Links";
 import { SectionContainer } from "../components/Containers";
 import SectionTitle from "../components/SectionTitle";
-import ImageCard from "../components/ImageCard";
+import ImageCard from "../components/cards/ImageCard";
 import SkillsTableCard from "../components/tables/SkillsTableCard";
 
 import {
@@ -17,7 +17,7 @@ import {
 
 const AboutInformationPanel = styled.div`
   display: grid;
-  grid-template-columns: 20em 30em;
+  grid-template-columns: 20em 35em;
   grid-template-rows: 20em 35em;
   gap: 1.5em;
 `;

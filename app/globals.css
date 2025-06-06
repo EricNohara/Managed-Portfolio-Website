@@ -52,3 +52,28 @@ body {
   scrollbar-color: #ec2d47 transparent;
   scrollbar-width: thin;
 }
+
+/* Red scrollbar for the whole page */
+body::-webkit-scrollbar,
+html::-webkit-scrollbar {
+  width: 8px;
+  background: transparent;
+}
+
+body::-webkit-scrollbar-thumb,
+html::-webkit-scrollbar-thumb {
+  background: #ec2d47;
+  border-radius: 4px;
+}
+
+body::-webkit-scrollbar-thumb:hover,
+html::-webkit-scrollbar-thumb:hover {
+  background: #b71c2b;
+}
+
+/* For Firefox */
+body,
+html {
+  scrollbar-color: #ec2d47 transparent;
+  scrollbar-width: thin;
+}

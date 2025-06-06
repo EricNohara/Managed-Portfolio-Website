@@ -5,7 +5,7 @@ export const HomeSectionText = styled.p`
 `;
 
 export const HomeSectionNameText = styled.span`
-  color: red;
+  color: var(--secondary);
 `;
 
 export const SectionTitleText = styled.h1`
@@ -26,4 +26,18 @@ export const AboutBio = styled.p`
   padding: 5%;
   background-color: var(--dblue2);
   border-radius: 10px;
+`;
+
+export const ExperienceSectionName = styled.h2`
+  font-size: 1.8rem;
+`;
+
+export const ExperienceSectionDate = styled.h4`
+  font-size: 1.1rem;
+  color: grey;
+  font-style: italic;
+`;
+
+export const ExperienceSubtitle = styled.b`
+  font-size: 1.2;
 `;

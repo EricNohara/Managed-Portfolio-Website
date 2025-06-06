@@ -12,10 +12,11 @@ const SectionTitleContainer = styled.div`
 `;
 
 const SectionTitleDivider = styled.div`
-  background-color: red;
+  background-color: var(--secondary);
   height: 5px;
   width: 100%;
   border-radius: 2px;
+  margin-bottom: 2rem;
 `;
 
 type SectionTitleProps = {

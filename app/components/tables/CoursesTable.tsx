@@ -9,6 +9,7 @@ import TableRow from "@mui/material/TableRow";
 import TableSortLabel from "@mui/material/TableSortLabel";
 import { TableVirtuoso, TableComponents } from "react-virtuoso";
 import { ICourse } from "@/app/interfaces/IUserData";
+import { lighten } from "@mui/material";
 
 const columns = [
   { dataKey: "name", label: "Name", width: "30%" },
@@ -146,7 +147,7 @@ export default function CoursesTable({ courses }: CoursesTableProps) {
         height,
         width: "100%",
         background: "var(--dblue)",
-        border: "2px solid red",
+        border: "2px solid var(--secondary)",
       }}
     >
       <TableVirtuoso

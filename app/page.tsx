@@ -8,7 +8,10 @@ import AboutSection from "./sections/AboutSection";
 import ExperienceSection from "./sections/ExperienceSection";
 import ProjectsSection from "./sections/ProjectsSection";
 import ContactSection from "./sections/ContactSection";
-import { SectionContainer } from "./components/Containers";
+import {
+  HomeSectionContainer,
+  SectionContainer,
+} from "./components/Containers";
 import LoadingSpinner from "./components/LoadingSpinner";
 
 export default function Home() {
@@ -16,9 +19,9 @@ export default function Home() {
 
   if (!userData)
     return (
-      <SectionContainer>
+      <HomeSectionContainer>
         <LoadingSpinner />
-      </SectionContainer>
+      </HomeSectionContainer>
     );
 
   return (

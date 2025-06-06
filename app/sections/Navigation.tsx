@@ -29,11 +29,11 @@ const NavListItem = styled.li`
 `;
 
 const NavLink = styled(Link)<{ $active?: boolean }>`
-  color: ${({ $active }) => ($active ? "red" : "white")};
+  color: ${({ $active }) => ($active ? "var(--secondary)" : "white")};
   transition: color 0.2s ease;
 
   &:hover {
-    color: red;
+    color: var(--secondary);
   }
 `;
 
@@ -43,7 +43,7 @@ const ExternalNavLink = styled.a`
   transition: color 0.2s ease;
 
   &:hover {
-    color: red;
+    color: var(--secondary);
   }
 `;
 
