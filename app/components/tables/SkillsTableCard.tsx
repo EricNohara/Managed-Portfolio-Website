@@ -25,6 +25,7 @@ const VirtuosoTableComponents: TableComponents<Skill> = {
     <TableContainer
       {...props}
       ref={ref}
+      className="redScrollbar"
       sx={{
         backgroundColor: "var(--dblue)",
         maxHeight: "100%",
@@ -126,7 +127,14 @@ export default function SkillsTableCard() {
   }
 
   return (
-    <Paper style={{ height: 425, width: "100%", background: "var(--dblue)" }}>
+    <Paper
+      style={{
+        height: 425,
+        width: "100%",
+        background: "var(--dblue)",
+        border: "2px solid red",
+      }}
+    >
       <TableVirtuoso
         data={sortedSkills}
         components={VirtuosoTableComponents}

@@ -6,8 +6,8 @@ import { IUserData } from "../interfaces/IUserData";
 import { ExternalLink } from "../components/Links";
 import { SectionContainer } from "../components/Containers";
 import SectionTitle from "../components/SectionTitle";
-import ImageCard from "../components/cards/ImageCard";
-import SkillsTableCard from "../components/cards/SkillsTableCard";
+import ImageCard from "../components/ImageCard";
+import SkillsTableCard from "../components/tables/SkillsTableCard";
 
 import {
   InfoSubtitle,
@@ -62,7 +62,7 @@ export default function AboutSection() {
   const userData: IUserData | null = useUserDataContext();
 
   return (
-    <SectionContainer id="about" style={{ paddingTop: "450px" }}>
+    <SectionContainer id="about" style={{ paddingTop: "60px" }}>
       <SectionTitle>About Me</SectionTitle>
       <AboutInformationPanel>
         <AboutInformationItem>

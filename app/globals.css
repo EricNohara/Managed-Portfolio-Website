@@ -31,3 +31,24 @@ body {
   --secondary: #ec2d47;
   --dsecondary: #9e2030;
 }
+
+/* Example: styles/RedScrollbar.module.css */
+.redScrollbar::-webkit-scrollbar {
+  width: 8px;
+  background: transparent;
+}
+
+.redScrollbar::-webkit-scrollbar-thumb {
+  background: #ec2d47; /* Your red color */
+  border-radius: 4px;
+}
+
+.redScrollbar::-webkit-scrollbar-thumb:hover {
+  background: #b71c2b; /* Darker red on hover */
+}
+
+/* For Firefox */
+.redScrollbar {
+  scrollbar-color: #ec2d47 transparent;
+  scrollbar-width: thin;
+}

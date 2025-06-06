@@ -4,7 +4,7 @@ import { SocialIconLink } from "../components/Icon";
 import { useUserDataContext } from "../context/UserDataProvider";
 import { IUserData } from "../interfaces/IUserData";
 import { ExternalLink } from "../components/Links";
-import { SectionContainer } from "../components/Containers";
+import { HomeSectionContainer } from "../components/Containers";
 import { HomeSectionText, HomeSectionNameText } from "../components/Typography";
 
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
@@ -56,7 +56,7 @@ export default function HomeSection() {
   const userData: IUserData | null = useUserDataContext();
 
   return (
-    <SectionContainer id="home">
+    <HomeSectionContainer id="home">
       <HomeSectionTextContainer>
         {userData && userData.name && (
           <HomeSectionText>
@@ -97,6 +97,6 @@ export default function HomeSection() {
               )
           )}
       </HomeSectionIconsContainer>
-    </SectionContainer>
+    </HomeSectionContainer>
   );
 }
