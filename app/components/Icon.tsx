@@ -2,11 +2,11 @@ import styled from "styled-components";
 import { ExternalLink } from "./Links";
 
 const Icon = styled.p`
-  color: #b6c6cf;
+  color: var(--txtgrey);
   transition: color 0.2s ease;
 
   &:hover {
-    color: white;
+    color: var(--secondary);
     transition: color 0.2s ease;
     cursor: pointer;
   }

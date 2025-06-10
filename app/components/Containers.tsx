@@ -68,3 +68,11 @@ export const IconsContainer = styled.div`
   justify-content: center;
   gap: 1rem;
 `;
+
+export const ExperienceTitleContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  margin-bottom: 1rem;
+`;

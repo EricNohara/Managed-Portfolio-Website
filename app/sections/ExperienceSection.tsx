@@ -9,7 +9,7 @@ import WorkCard from "../components/cards/WorkCard";
 const ExperienceInfoContainer = styled.div`
   display: grid;
   grid-template-columns: 35em 35em;
-  gap: 2em;
+  gap: 4em;
 `;
 
 const ExperienceContainer = styled.div`

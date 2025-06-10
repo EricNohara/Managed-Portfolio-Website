@@ -13,6 +13,7 @@ import {
   SectionContainer,
 } from "./components/Containers";
 import LoadingSpinner from "./components/LoadingSpinner";
+import Footer from "./components/Footer";
 
 export default function Home() {
   const userData: IUserData | null = useUserDataContext();
@@ -32,6 +33,7 @@ export default function Home() {
       <ExperienceSection />
       <ProjectsSection />
       <ContactSection />
+      <Footer />
       {/* <h1>{userData.name}</h1>
       <p>{userData.email}</p> */}
     </div>

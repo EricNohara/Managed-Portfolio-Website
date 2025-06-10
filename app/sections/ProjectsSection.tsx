@@ -10,7 +10,11 @@ import CloseIcon from "@mui/icons-material/Close";
 import LinkIcon from "@mui/icons-material/Link";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import { SocialIconLink } from "../components/Icon";
-import { ProjectTitle, ProjectSubtitle } from "../components/Typography";
+import {
+  ProjectTitle,
+  ProjectSubtitle,
+  NormalText,
+} from "../components/Typography";
 import {
   ProjectListContainer,
   ProjectInfoContainer,
@@ -61,7 +65,7 @@ export default function ProjectsSection() {
   );
 
   return (
-    <SectionContainer id="projects">
+    <SectionContainer id="projects" style={{ paddingTop: "60px" }}>
       <SectionTitle subtitle="click project name to view details">
         Projects
       </SectionTitle>
@@ -127,7 +131,7 @@ export default function ProjectsSection() {
               {selectedProject.thumbnail_url && (
                 <ImageCard imageUrl={selectedProject.thumbnail_url} />
               )}
-              {selectedProject.description}
+              <NormalText>{selectedProject.description}</NormalText>
             </ProjectInfoContainer>
           </Modal>
         </Overlay>

@@ -14,7 +14,7 @@ body {
   height: 100%;
   box-sizing: border-box;
   background-color: #1f2430;
-  color: white;
+  color: var(--txtgrey);
   scroll-behavior: smooth;
 }
 
@@ -26,7 +26,7 @@ body {
   --mblue: #415a77;
   --lblue: #778da9;
   --grey: #e0e1dd;
-  --txtgrey: #c7c8c5;
+  --txtgrey: #cdd5de;
   --dgrey: #152130;
   --secondary: #ec2d47;
   --dsecondary: #9e2030;

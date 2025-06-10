@@ -13,13 +13,23 @@ import {
   ExperienceContainer,
   ExperiencePairContainer,
 } from "../Containers";
+import { SocialIconLink } from "../Icon";
+import SchoolIcon from "@mui/icons-material/School";
+import { ExperienceTitleContainer } from "../Containers";
 
 export default function EducationCard() {
   const userData: IUserData | null = useUserDataContext();
 
   return (
     <>
-      <InfoSubtitle>Education</InfoSubtitle>
+      <ExperienceTitleContainer>
+        <InfoSubtitle>Education</InfoSubtitle>
+        {userData && userData.transcript_url && (
+          <SocialIconLink href={userData.transcript_url} label="resume">
+            <SchoolIcon fontSize="large" />
+          </SocialIconLink>
+        )}
+      </ExperienceTitleContainer>
       {userData &&
         userData.education &&
         userData.education.map((edu) => (

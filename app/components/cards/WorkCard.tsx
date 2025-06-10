@@ -13,68 +13,78 @@ import AccordionSummary from "@mui/material/AccordionSummary";
 import AccordionDetails from "@mui/material/AccordionDetails";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { lighten } from "@mui/material/styles";
+import { ExperienceTitleContainer } from "../Containers";
+import ContactPageIcon from "@mui/icons-material/ContactPage";
+import { SocialIconLink } from "../Icon";
 
 export default function WorkCard() {
   const userData: IUserData | null = useUserDataContext();
 
   return (
     <>
-      <InfoSubtitle>Job</InfoSubtitle>
+      <ExperienceTitleContainer>
+        <InfoSubtitle>Work</InfoSubtitle>
+        {userData && userData.resume_url && (
+          <SocialIconLink href={userData.resume_url} label="resume">
+            <ContactPageIcon fontSize="large" />
+          </SocialIconLink>
+        )}
+      </ExperienceTitleContainer>
+
       {userData &&
         userData.experiences &&
         userData.experiences.map((exp) => (
-          <Accordion
-            key={exp.company}
-            sx={{
-              width: "100%",
-              mb: 1,
-              backgroundColor: "var(--dblue)",
-              color: "white",
-              borderRadius: "10px",
-              transition: "background-color 0.2s",
-              "&:hover": {
-                backgroundColor: lighten("#1b263b", 0.05), // adjust to a lighter shade of your --dblue
-              },
-            }}
-          >
-            <AccordionSummary
-              expandIcon={<ExpandMoreIcon fontSize="large" />}
+          <div style={{ marginBottom: "2rem" }} key={exp.company}>
+            <Accordion
               sx={{
-                "& .MuiAccordionSummary-expandIconWrapper": {
-                  transition: "color 0.2s ease",
-                },
-                "&:hover .MuiAccordionSummary-expandIconWrapper": {
-                  color: "#ec2d47", // Your red color
+                width: "100%",
+                backgroundColor: "var(--dblue)",
+                color: "white",
+                borderRadius: "10px",
+                transition: "background-color 0.2s",
+                "&:hover": {
+                  backgroundColor: lighten("#1b263b", 0.05), // adjust to a lighter shade of your --dblue
                 },
               }}
             >
-              <div style={{ width: "100%" }}>
-                <ExperienceSectionName>{exp.company}</ExperienceSectionName>
-                <ExperiencePairContainer>
-                  <ExperienceSubtitle>{exp.job_title}</ExperienceSubtitle>
-                  <ExperienceSectionDate>
-                    {exp.date_start && exp.date_end
-                      ? `${formatDate(exp.date_start)} - ${formatDate(
-                          exp.date_end
-                        )}`
-                      : exp.date_start
-                      ? formatDate(exp.date_start)
-                      : ""}
-                  </ExperienceSectionDate>
-                </ExperiencePairContainer>
-              </div>
-            </AccordionSummary>
-            <AccordionDetails>
-              {exp.job_description && exp.job_description !== "" ? (
-                <div>
-                  <b>Description: </b>
-                  {exp.job_description}
+              <AccordionSummary
+                expandIcon={<ExpandMoreIcon fontSize="large" />}
+                sx={{
+                  "& .MuiAccordionSummary-expandIconWrapper": {
+                    transition: "color 0.2s ease",
+                  },
+                  "&:hover .MuiAccordionSummary-expandIconWrapper": {
+                    color: "#ec2d47", // Your red color
+                  },
+                }}
+              >
+                <div style={{ width: "100%" }}>
+                  <ExperienceSectionName>{exp.company}</ExperienceSectionName>
+                  <ExperiencePairContainer>
+                    <ExperienceSubtitle>{exp.job_title}</ExperienceSubtitle>
+                    <ExperienceSectionDate>
+                      {exp.date_start && exp.date_end
+                        ? `${formatDate(exp.date_start)} - ${formatDate(
+                            exp.date_end
+                          )}`
+                        : exp.date_start
+                        ? formatDate(exp.date_start)
+                        : ""}
+                    </ExperienceSectionDate>
+                  </ExperiencePairContainer>
                 </div>
-              ) : (
-                <i>No description provided.</i>
-              )}
-            </AccordionDetails>
-          </Accordion>
+              </AccordionSummary>
+              <AccordionDetails>
+                {exp.job_description && exp.job_description !== "" ? (
+                  <div style={{ color: "var(--txtgrey" }}>
+                    {exp.job_description}
+                  </div>
+                ) : (
+                  <i>No description provided.</i>
+                )}
+              </AccordionDetails>
+            </Accordion>
+          </div>
         ))}
     </>
   );
