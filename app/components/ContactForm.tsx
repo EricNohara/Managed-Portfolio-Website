@@ -1,4 +1,6 @@
 import styled from "styled-components";
+import React, { useState } from "react";
+import { Alert, Snackbar } from "@mui/material";
 
 const ContactFormContainer = styled.form`
   display: flex;
@@ -65,18 +67,97 @@ const ContactButton = styled.button`
 `;
 
 export default function ContactForm() {
+  const [name, setName] = useState<string>("");
+  const [email, setEmail] = useState<string>("");
+  const [message, setMessage] = useState<string>("");
+  const [status, setStatus] = useState<
+    "idle" | "sending" | "success" | "error"
+  >("idle");
+  const [open, setOpen] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setStatus("sending");
+    try {
+      const res = await fetch("/api/email", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name, email, message }),
+      });
+      if (res.ok) {
+        setStatus("success");
+        setName("");
+        setEmail("");
+        setMessage("");
+        setOpen(true);
+      } else {
+        setStatus("error");
+        setOpen(true);
+      }
+    } catch {
+      setStatus("error");
+      setOpen(true);
+    }
+  };
+
+  const handleClose = (
+    event?: React.SyntheticEvent | Event,
+    reason?: string
+  ) => {
+    if (reason === "clickaway") {
+      return;
+    }
+    setOpen(false);
+    setStatus("idle");
+  };
+
   return (
-    <ContactFormContainer>
-      <ContactTextInput
-        type="text"
-        placeholder="Your Name Here"
-      ></ContactTextInput>
-      <ContactTextInput
-        type="text"
-        placeholder="Your Email Here"
-      ></ContactTextInput>
-      <ContactTextArea placeholder="Your Message Here"></ContactTextArea>
-      <ContactButton>Send Email</ContactButton>
-    </ContactFormContainer>
+    <>
+      <ContactFormContainer onSubmit={handleSubmit}>
+        <ContactTextInput
+          type="text"
+          placeholder="Your Name Here"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          required
+        />
+        <ContactTextInput
+          type="text"
+          placeholder="Your Email Here"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          required
+        />
+        <ContactTextArea
+          placeholder="Your Message Here"
+          value={message}
+          onChange={(e) => setMessage(e.target.value)}
+          required
+        />
+        <ContactButton type="submit" disabled={status === "sending"}>
+          {status === "sending" ? "Sending..." : "Send Email"}
+        </ContactButton>
+      </ContactFormContainer>
+      <Snackbar
+        open={open && status === "success"}
+        autoHideDuration={4000}
+        onClose={handleClose}
+        anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
+      >
+        <Alert onClose={handleClose} severity="success" sx={{ width: "100%" }}>
+          Message sent!
+        </Alert>
+      </Snackbar>
+      <Snackbar
+        open={open && status === "error"}
+        autoHideDuration={4000}
+        onClose={handleClose}
+        anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
+      >
+        <Alert onClose={handleClose} severity="error" sx={{ width: "100%" }}>
+          Failed to send. Please try again.
+        </Alert>
+      </Snackbar>
+    </>
   );
 }
