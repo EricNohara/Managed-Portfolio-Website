@@ -17,7 +17,12 @@ export default function Home() {
 
   if (!userData)
     return (
-      <HomeSectionContainer>
+      <HomeSectionContainer
+        style={{
+          background:
+            "radial-gradient(circle at center, var(--dblue2) 20%, var(--black) 100%);",
+        }}
+      >
         <LoadingSpinner />
       </HomeSectionContainer>
     );

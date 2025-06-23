@@ -4,7 +4,7 @@ import React from "react";
 const OutlinedButton = styled.button`
   border: 3px solid var(--secondary);
   border-radius: 5px;
-  padding: 1% 5%;
+  padding: 1% 7.5%;
   color: var(--secondary);
   transition: box-shadow 0.2s, transform 0.2s;
 

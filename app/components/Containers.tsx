@@ -6,6 +6,8 @@ export const HomeSectionContainer = styled.section`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  position: relative;
+  overflow: hidden;
 `;
 
 export const SectionContainer = styled.section`

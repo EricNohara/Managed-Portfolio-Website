@@ -21,9 +21,8 @@ import {
   ProjectSubtitleContainer,
   IconsContainer,
 } from "../components/Containers";
-import GradientBackground from "../components/GradientBackground";
 
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 
 const ProjectList = styled.ul`
   list-style: none;
@@ -65,22 +64,58 @@ export default function ProjectsSection() {
     null
   );
 
+  // Vanta ref and effect
+  const vantaRef = useRef<HTMLDivElement>(null);
+  const vantaEffect = useRef<any>(null);
+
+  useEffect(() => {
+    // @ts-ignore
+    const NET = window.VANTA && window.VANTA.NET;
+    // @ts-ignore
+    const THREE = window.THREE;
+    if (NET && THREE && vantaRef.current && !vantaEffect.current) {
+      vantaEffect.current = NET({
+        el: vantaRef.current,
+        THREE,
+        mouseControls: true,
+        touchControls: true,
+        gyroControls: false,
+        minHeight: 200.0,
+        minWidth: 200.0,
+        scale: 1.0,
+        scaleMobile: 1.0,
+        points: 5.0,
+        maxDistance: 26.0,
+        spacing: 16.0,
+        showDots: false,
+      });
+    }
+    return () => {
+      if (vantaEffect.current) {
+        vantaEffect.current.destroy();
+        vantaEffect.current = null;
+      }
+    };
+  }, []);
+
   return (
     <SectionContainer
       id="projects"
       style={{ paddingTop: "60px", position: "relative", overflow: "hidden" }}
     >
-      <div style={{ position: "absolute", inset: 0, zIndex: 0 }}>
-        <GradientBackground />
-      </div>
+      {/* Vanta background */}
       <div
+        ref={vantaRef}
         style={{
-          position: "relative",
-          zIndex: 1,
+          position: "absolute",
+          inset: 0,
           width: "100%",
           height: "100%",
+          zIndex: 0,
         }}
-      >
+      />
+      {/* Content above Vanta */}
+      <div style={{ position: "relative", zIndex: 1 }}>
         <SectionTitle subtitle="click project name to view details">
           Projects
         </SectionTitle>
