@@ -27,7 +27,13 @@ export default function ExperienceSection() {
   console.log(userData?.education);
 
   return (
-    <SectionContainer id="experience" style={{ paddingTop: "60px" }}>
+    <SectionContainer
+      id="experience"
+      style={{
+        paddingTop: "60px",
+        background: "linear-gradient(to top, var(--dblue), var(--black))",
+      }}
+    >
       <SectionTitle>Experience</SectionTitle>
       <ExperienceInfoContainer>
         <ExperienceContainer>

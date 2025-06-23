@@ -21,6 +21,7 @@ import {
   ProjectSubtitleContainer,
   IconsContainer,
 } from "../components/Containers";
+import GradientBackground from "../components/GradientBackground";
 
 import React, { useState } from "react";
 
@@ -65,77 +66,92 @@ export default function ProjectsSection() {
   );
 
   return (
-    <SectionContainer id="projects" style={{ paddingTop: "60px" }}>
-      <SectionTitle subtitle="click project name to view details">
-        Projects
-      </SectionTitle>
-      <ProjectListContainer>
-        <ProjectList>
-          {userData &&
-            userData.projects &&
-            [...userData.projects]
-              .sort((a, b) => b.name.length - a.name.length)
-              .map((proj) => (
-                <ProjectListItem
-                  key={proj.name}
-                  onClick={() => setSelectedProject(proj)}
+    <SectionContainer
+      id="projects"
+      style={{ paddingTop: "60px", position: "relative", overflow: "hidden" }}
+    >
+      <div style={{ position: "absolute", inset: 0, zIndex: 0 }}>
+        <GradientBackground />
+      </div>
+      <div
+        style={{
+          position: "relative",
+          zIndex: 1,
+          width: "100%",
+          height: "100%",
+        }}
+      >
+        <SectionTitle subtitle="click project name to view details">
+          Projects
+        </SectionTitle>
+        <ProjectListContainer>
+          <ProjectList>
+            {userData &&
+              userData.projects &&
+              [...userData.projects]
+                .sort((a, b) => b.name.length - a.name.length)
+                .map((proj) => (
+                  <ProjectListItem
+                    key={proj.name}
+                    onClick={() => setSelectedProject(proj)}
+                  >
+                    {proj.name}
+                  </ProjectListItem>
+                ))}
+          </ProjectList>
+        </ProjectListContainer>
+        {selectedProject && (
+          <Overlay onClick={() => setSelectedProject(null)}>
+            <Modal onClick={(e) => e.stopPropagation()}>
+              <CloseButton onClick={() => setSelectedProject(null)}>
+                <CloseIcon />
+              </CloseButton>
+              <ProjectInfoContainer>
+                <div
+                  style={{ display: "flex", gap: "2rem", paddingRight: "2rem" }}
                 >
-                  {proj.name}
-                </ProjectListItem>
-              ))}
-        </ProjectList>
-      </ProjectListContainer>
-      {selectedProject && (
-        <Overlay onClick={() => setSelectedProject(null)}>
-          <Modal onClick={(e) => e.stopPropagation()}>
-            <CloseButton onClick={() => setSelectedProject(null)}>
-              <CloseIcon />
-            </CloseButton>
-            <ProjectInfoContainer>
-              <div
-                style={{ display: "flex", gap: "2rem", paddingRight: "2rem" }}
-              >
-                <ProjectTitle>{selectedProject.name}</ProjectTitle>
-                <IconsContainer>
-                  {selectedProject.github_url && (
-                    <SocialIconLink
-                      href={selectedProject.github_url}
-                      label="Github URL"
-                    >
-                      <GitHubIcon fontSize="large" />
-                    </SocialIconLink>
-                  )}
-                  {selectedProject.demo_url && (
-                    <SocialIconLink
-                      href={selectedProject.demo_url}
-                      label="Demo URL"
-                    >
-                      <LinkIcon fontSize="large" />
-                    </SocialIconLink>
-                  )}
-                </IconsContainer>
-              </div>
-              <ProjectSubtitleContainer>
-                <ProjectSubtitle>
-                  {formatDate(selectedProject.date_start)} -{" "}
-                  {formatDate(selectedProject.date_end)}
-                </ProjectSubtitle>
-                <ProjectSubtitle>
-                  {joinSubtitle(
-                    selectedProject.languages_used,
-                    selectedProject.frameworks_used,
-                    selectedProject.technologies_used
-                  )}
-                </ProjectSubtitle>
-              </ProjectSubtitleContainer>
-              {selectedProject.thumbnail_url && (
-                <ImageCard imageUrl={selectedProject.thumbnail_url} />
-              )}
-              <NormalText>{selectedProject.description}</NormalText>
-            </ProjectInfoContainer>
-          </Modal>
-        </Overlay>
-      )}
+                  <ProjectTitle>{selectedProject.name}</ProjectTitle>
+                  <IconsContainer>
+                    {selectedProject.github_url && (
+                      <SocialIconLink
+                        href={selectedProject.github_url}
+                        label="Github URL"
+                      >
+                        <GitHubIcon fontSize="large" />
+                      </SocialIconLink>
+                    )}
+                    {selectedProject.demo_url && (
+                      <SocialIconLink
+                        href={selectedProject.demo_url}
+                        label="Demo URL"
+                      >
+                        <LinkIcon fontSize="large" />
+                      </SocialIconLink>
+                    )}
+                  </IconsContainer>
+                </div>
+                <ProjectSubtitleContainer>
+                  <ProjectSubtitle>
+                    {formatDate(selectedProject.date_start)} -{" "}
+                    {formatDate(selectedProject.date_end)}
+                  </ProjectSubtitle>
+                  <ProjectSubtitle>
+                    {joinSubtitle(
+                      selectedProject.languages_used,
+                      selectedProject.frameworks_used,
+                      selectedProject.technologies_used
+                    )}
+                  </ProjectSubtitle>
+                </ProjectSubtitleContainer>
+                {selectedProject.thumbnail_url && (
+                  <ImageCard imageUrl={selectedProject.thumbnail_url} />
+                )}
+                <NormalText>{selectedProject.description}</NormalText>
+              </ProjectInfoContainer>
+            </Modal>
+          </Overlay>
+        )}
+      </div>
     </SectionContainer>
   );
 }

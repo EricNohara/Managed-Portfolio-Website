@@ -8,10 +8,7 @@ import AboutSection from "./sections/AboutSection";
 import ExperienceSection from "./sections/ExperienceSection";
 import ProjectsSection from "./sections/ProjectsSection";
 import ContactSection from "./sections/ContactSection";
-import {
-  HomeSectionContainer,
-  SectionContainer,
-} from "./components/Containers";
+import { HomeSectionContainer } from "./components/Containers";
 import LoadingSpinner from "./components/LoadingSpinner";
 import Footer from "./components/Footer";
 
@@ -34,8 +31,6 @@ export default function Home() {
       <ProjectsSection />
       <ContactSection />
       <Footer />
-      {/* <h1>{userData.name}</h1>
-      <p>{userData.email}</p> */}
     </div>
   );
 }

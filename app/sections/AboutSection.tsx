@@ -45,7 +45,7 @@ const AboutNameAndDescriptionContainer = styled.div`
   width: 100%;
   height: 100%;
   padding: 5%;
-  background-color: var(--dblue2);
+  background-color: var(--dblue);
   border-radius: 10px;
   box-sizing: border-box;
 `;
@@ -62,7 +62,13 @@ export default function AboutSection() {
   const userData: IUserData | null = useUserDataContext();
 
   return (
-    <SectionContainer id="about" style={{ paddingTop: "60px" }}>
+    <SectionContainer
+      id="about"
+      style={{
+        paddingTop: "60px",
+        background: "linear-gradient(to bottom, var(--dblue), var(--black))",
+      }}
+    >
       <SectionTitle>About Me</SectionTitle>
       <AboutInformationPanel>
         <AboutInformationItem>

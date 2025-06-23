@@ -15,13 +15,18 @@ export const Overlay = styled.div`
 `;
 
 export const Modal = styled.div`
-  background: var(--dblue2);
+  background: radial-gradient(
+    circle at center,
+    var(--dblue2) 50%,
+    var(--black) 100%
+  );
   color: white;
   padding: 2rem 3rem;
   border-radius: 10px;
   width: 60vw;
   max-height: 80vh;
   overflow-y: auto;
+  border: 2px solid var(--dsecondary);
 `;
 
 export const CloseButton = styled.button`

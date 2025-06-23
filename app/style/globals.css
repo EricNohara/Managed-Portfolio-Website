@@ -32,6 +32,20 @@ body {
   --dsecondary: #9e2030;
 }
 
+:root {
+  --black-rgb: 0, 0, 0;
+  --bblue-rgb: 4, 8, 13;
+  --dblue-rgb: 27, 38, 59;
+  --dblue2-rgb: 17, 24, 36;
+  --mblue-rgb: 65, 90, 119;
+  --lblue-rgb: 119, 141, 169;
+  --grey-rgb: 224, 225, 221;
+  --txtgrey-rgb: 205, 213, 222;
+  --dgrey-rgb: 21, 33, 48;
+  --secondary-rgb: 236, 45, 71;
+  --dsecondary-rgb: 158, 32, 48;
+}
+
 /* Example: styles/RedScrollbar.module.css */
 .redScrollbar::-webkit-scrollbar {
   width: 8px;

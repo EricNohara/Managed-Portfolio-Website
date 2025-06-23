@@ -27,7 +27,7 @@ export const AboutDescription = styled.h3`
 
 export const AboutBio = styled.p`
   padding: 5%;
-  background-color: var(--dblue2);
+  background-color: var(--dblue);
   border-radius: 10px;
 `;
 
