@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./style/globals.css";
 import { UserDataProvider } from "./context/UserDataProvider";
+import { font } from "./style/fonts/localFonts";
 
 export const metadata: Metadata = {
   title: "Managed Portfolio Website",
@@ -12,7 +13,7 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en">
+    <html lang="en" className={font.className}>
       <body>
         <UserDataProvider>{children}</UserDataProvider>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>

@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { titleFont } from "../style/fonts/localFonts";
 
 export const HomeSectionText = styled.p`
   font-size: 3rem;
@@ -9,13 +10,17 @@ export const HomeSectionNameText = styled.span`
   color: var(--secondary);
 `;
 
-export const SectionTitleText = styled.h1`
-  font-size: 4rem;
+export const SectionTitleText = styled.h1.attrs(() => ({
+  className: titleFont.className,
+}))`
+  font-size: 5rem;
   text-transform: uppercase;
   color: white;
 `;
 
-export const InfoSubtitle = styled.h2`
+export const InfoSubtitle = styled.h2.attrs(() => ({
+  className: titleFont.className,
+}))`
   font-size: 2.5rem;
   color: white;
 `;
@@ -47,7 +52,9 @@ export const AccordianSubtitle = styled.b`
   color: white;
 `;
 
-export const ProjectTitle = styled.h2`
+export const ProjectTitle = styled.h2.attrs(() => ({
+  className: titleFont.className,
+}))`
   font-size: 2.5rem;
 `;
 

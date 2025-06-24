@@ -10,6 +10,7 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import TableSortLabel from "@mui/material/TableSortLabel";
 import { TableVirtuoso, TableComponents } from "react-virtuoso";
+import { titleFont, font } from "@/app/style/fonts/localFonts";
 
 const columns = [
   { dataKey: "name", label: "Name", width: 160 },
@@ -17,7 +18,6 @@ const columns = [
   { dataKey: "years_of_experience", label: "Years of Experience", width: 180 },
 ] as const;
 
-type Column = (typeof columns)[number];
 type Skill = IUserSkill;
 
 const VirtuosoTableComponents: TableComponents<Skill> = {
@@ -83,6 +83,7 @@ export default function SkillsTableCard() {
               color: "white",
               fontWeight: "bold",
               background: "var(--bblue)",
+              fontFamily: titleFont.style.fontFamily,
             }}
             sortDirection={orderBy === column.dataKey ? order : false}
           >
@@ -92,6 +93,7 @@ export default function SkillsTableCard() {
               onClick={() => handleRequestSort(column.dataKey)}
               sx={{
                 color: "#fff",
+                fontFamily: titleFont.style.fontFamily,
                 "&.Mui-active": { color: "#fff" },
                 "& .MuiTableSortLabel-icon": { color: "#fff !important" },
                 "&:hover": {
@@ -117,7 +119,11 @@ export default function SkillsTableCard() {
           <TableCell
             key={column.dataKey}
             align="left"
-            style={{ color: "white", background: "var(--dblue)" }}
+            style={{
+              color: "white",
+              background: "var(--dblue)",
+              fontFamily: font.style.fontFamily,
+            }}
           >
             {skill[column.dataKey] ?? "-"}
           </TableCell>

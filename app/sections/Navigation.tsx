@@ -5,8 +5,11 @@ import { useUserDataContext } from "../context/UserDataProvider";
 import { IUserData } from "../interfaces/IUserData";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
+import { titleFont } from "../style/fonts/localFonts";
 
-const NavBar = styled.nav`
+const NavBar = styled.nav.attrs(() => ({
+  className: titleFont.className,
+}))`
   display: flex;
   justify-content: center;
   align-items: center;

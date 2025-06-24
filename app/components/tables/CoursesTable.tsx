@@ -9,7 +9,7 @@ import TableRow from "@mui/material/TableRow";
 import TableSortLabel from "@mui/material/TableSortLabel";
 import { TableVirtuoso, TableComponents } from "react-virtuoso";
 import { ICourse } from "@/app/interfaces/IUserData";
-import { lighten } from "@mui/material";
+import { titleFont, font } from "@/app/style/fonts/localFonts";
 
 const columns = [
   { dataKey: "name", label: "Name", width: "30%" },
@@ -86,6 +86,7 @@ export default function CoursesTable({ courses }: CoursesTableProps) {
               color: "white",
               fontWeight: "bold",
               background: "var(--bblue)",
+              fontFamily: titleFont.style.fontFamily,
             }}
             sortDirection={orderBy === column.dataKey ? order : false}
           >
@@ -98,6 +99,7 @@ export default function CoursesTable({ courses }: CoursesTableProps) {
                 }
                 sx={{
                   color: "#fff",
+                  fontFamily: titleFont.style.fontFamily,
                   "&.Mui-active": { color: "#fff" },
                   "& .MuiTableSortLabel-icon": { color: "#fff !important" },
                   "&:hover": {
@@ -126,7 +128,11 @@ export default function CoursesTable({ courses }: CoursesTableProps) {
           <TableCell
             key={column.dataKey}
             align="left"
-            style={{ color: "white", background: "var(--dblue)" }}
+            style={{
+              color: "white",
+              background: "var(--dblue)",
+              fontFamily: font.style.fontFamily,
+            }}
           >
             {course[column.dataKey] ?? "-"}
           </TableCell>
@@ -148,6 +154,7 @@ export default function CoursesTable({ courses }: CoursesTableProps) {
         width: "100%",
         background: "var(--dblue)",
         border: "2px solid var(--dsecondary)",
+        marginTop: "2rem",
       }}
     >
       <TableVirtuoso
