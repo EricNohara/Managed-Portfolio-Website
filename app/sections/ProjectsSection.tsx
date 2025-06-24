@@ -24,6 +24,7 @@ import {
 
 import React, { useState, useEffect, useRef } from "react";
 import { createPortal } from "react-dom";
+import ScrollAnimation from "../components/ScrollAnimation";
 
 const ProjectList = styled.ul`
   list-style: none;
@@ -157,12 +158,11 @@ export default function ProjectsSection() {
               [...userData.projects]
                 .sort((a, b) => b.name.length - a.name.length)
                 .map((proj) => (
-                  <ProjectListItem
-                    key={proj.name}
-                    onClick={() => setSelectedProject(proj)}
-                  >
-                    {proj.name}
-                  </ProjectListItem>
+                  <ScrollAnimation key={proj.name}>
+                    <ProjectListItem onClick={() => setSelectedProject(proj)}>
+                      {proj.name}
+                    </ProjectListItem>
+                  </ScrollAnimation>
                 ))}
           </ProjectList>
         </ProjectListContainer>

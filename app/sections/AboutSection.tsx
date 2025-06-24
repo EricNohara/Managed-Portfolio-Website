@@ -1,13 +1,11 @@
 import styled from "styled-components";
-import { OutlinedButton } from "../components/Buttons";
-import { SocialIconLink } from "../components/Icon";
 import { useUserDataContext } from "../context/UserDataProvider";
 import { IUserData } from "../interfaces/IUserData";
-import { ExternalLink } from "../components/Links";
 import { SectionContainer } from "../components/Containers";
 import SectionTitle from "../components/SectionTitle";
 import ImageCard from "../components/cards/ImageCard";
 import SkillsTableCard from "../components/tables/SkillsTableCard";
+import ScrollAnimation from "../components/ScrollAnimation";
 
 import {
   InfoSubtitle,
@@ -72,36 +70,44 @@ export default function AboutSection() {
     >
       <SectionTitle>About Me</SectionTitle>
       <AboutInformationPanel>
-        <AboutInformationItem>
-          {userData && userData.portrait_url && (
-            <ImageCard
-              imageUrl={userData.portrait_url}
-              flipped={true}
-              link={userData.linkedin_url ? userData.linkedin_url : ""}
-            />
-          )}
-        </AboutInformationItem>
+        <ScrollAnimation>
+          <AboutInformationItem>
+            {userData && userData.portrait_url && (
+              <ImageCard
+                imageUrl={userData.portrait_url}
+                flipped={true}
+                link={userData.linkedin_url ? userData.linkedin_url : ""}
+              />
+            )}
+          </AboutInformationItem>
+        </ScrollAnimation>
         <AboutInformationItem>
           <AboutNameAndBioContainer>
-            <AboutNameAndDescriptionContainer>
-              <InfoSubtitle>{userData && userData.name}</InfoSubtitle>
-              <AboutDescription>
-                {userData && userData.location}
-              </AboutDescription>
-            </AboutNameAndDescriptionContainer>
-            <AboutBio>
-              I'm a rising senior at Boston University pursuing a master's
-              degree in Computer Science. I'm interested in computer systems,
-              web and game development, and machine learning!
-            </AboutBio>
+            <ScrollAnimation style={{ width: "100%", height: "100%" }}>
+              <AboutNameAndDescriptionContainer>
+                <InfoSubtitle>{userData && userData.name}</InfoSubtitle>
+                <AboutDescription>
+                  {userData && userData.location}
+                </AboutDescription>
+              </AboutNameAndDescriptionContainer>
+            </ScrollAnimation>
+            <ScrollAnimation>
+              <AboutBio>
+                I'm a rising senior at Boston University pursuing a master's
+                degree in Computer Science. I'm interested in computer systems,
+                web and game development, and machine learning!
+              </AboutBio>
+            </ScrollAnimation>
           </AboutNameAndBioContainer>
         </AboutInformationItem>
-        <AboutInformationFullWidthItem>
-          <InfoSubtitle className="mb-4 text-center">
-            Technical Skills
-          </InfoSubtitle>
-          <SkillsTableCard />
-        </AboutInformationFullWidthItem>
+        <ScrollAnimation style={{ gridColumn: "1 /span 2" }}>
+          <AboutInformationFullWidthItem>
+            <InfoSubtitle className="mb-4 text-center">
+              Technical Skills
+            </InfoSubtitle>
+            <SkillsTableCard />
+          </AboutInformationFullWidthItem>
+        </ScrollAnimation>
       </AboutInformationPanel>
     </SectionContainer>
   );

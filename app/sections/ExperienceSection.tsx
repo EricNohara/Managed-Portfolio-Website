@@ -5,6 +5,7 @@ import { SectionContainer } from "../components/Containers";
 import SectionTitle from "../components/SectionTitle";
 import EducationCard from "../components/cards/EducationCard";
 import WorkCard from "../components/cards/WorkCard";
+import ScrollAnimation from "../components/ScrollAnimation";
 
 const ExperienceInfoContainer = styled.div`
   display: grid;
@@ -36,12 +37,16 @@ export default function ExperienceSection() {
     >
       <SectionTitle>Experience</SectionTitle>
       <ExperienceInfoContainer>
-        <ExperienceContainer>
-          <EducationCard />
-        </ExperienceContainer>
-        <ExperienceContainer>
-          <WorkCard />
-        </ExperienceContainer>
+        <ScrollAnimation>
+          <ExperienceContainer>
+            <EducationCard />
+          </ExperienceContainer>
+        </ScrollAnimation>
+        <ScrollAnimation>
+          <ExperienceContainer>
+            <WorkCard />
+          </ExperienceContainer>
+        </ScrollAnimation>
       </ExperienceInfoContainer>
     </SectionContainer>
   );

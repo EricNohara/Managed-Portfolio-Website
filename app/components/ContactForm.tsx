@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import React, { useState } from "react";
 import { Alert, Snackbar } from "@mui/material";
+import ScrollAnimation from "../components/ScrollAnimation";
 
 const ContactFormContainer = styled.form`
   display: flex;
@@ -110,29 +111,37 @@ export default function ContactForm() {
   return (
     <>
       <ContactFormContainer onSubmit={handleSubmit}>
-        <ContactTextInput
-          type="text"
-          placeholder="Your Name Here"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-          required
-        />
-        <ContactTextInput
-          type="text"
-          placeholder="Your Email Here"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          required
-        />
-        <ContactTextArea
-          placeholder="Your Message Here"
-          value={message}
-          onChange={(e) => setMessage(e.target.value)}
-          required
-        />
-        <ContactButton type="submit" disabled={status === "sending"}>
-          {status === "sending" ? "Sending..." : "Send"}
-        </ContactButton>
+        <ScrollAnimation style={{ width: "100%" }}>
+          <ContactTextInput
+            type="text"
+            placeholder="Your Name Here"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            required
+          />
+        </ScrollAnimation>
+        <ScrollAnimation style={{ width: "100%" }}>
+          <ContactTextInput
+            type="text"
+            placeholder="Your Email Here"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+          />
+        </ScrollAnimation>
+        <ScrollAnimation style={{ width: "100%" }}>
+          <ContactTextArea
+            placeholder="Your Message Here"
+            value={message}
+            onChange={(e) => setMessage(e.target.value)}
+            required
+          />
+        </ScrollAnimation>
+        <ScrollAnimation style={{ width: "100%" }}>
+          <ContactButton type="submit" disabled={status === "sending"}>
+            {status === "sending" ? "Sending..." : "Send"}
+          </ContactButton>
+        </ScrollAnimation>
       </ContactFormContainer>
       <Snackbar
         open={open && status === "success"}
