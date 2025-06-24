@@ -7,7 +7,9 @@ const FooterText = styled.p`
   color: grey;
   font-style: italic;
   text-align: center;
-  padding-bottom: 1rem;
+  padding: 1rem;
+  background: radial-gradient(circle at center, var(--dblue2), var(--black));
+  border-top: 2px solid var(--lblue);
 `;
 
 export default function Footer() {

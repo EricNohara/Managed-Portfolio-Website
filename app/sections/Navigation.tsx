@@ -11,7 +11,7 @@ const NavBar = styled.nav`
   justify-content: center;
   align-items: center;
   padding: 1%;
-  background-color: #3d3d3d;
+  background-color: rgba(49, 49, 49, 0.99);
   position: sticky;
   top: 0;
   z-index: 1000;

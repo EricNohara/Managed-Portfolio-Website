@@ -66,7 +66,8 @@ export default function AboutSection() {
       id="about"
       style={{
         paddingTop: "60px",
-        background: "linear-gradient(to bottom, var(--dblue), var(--black))",
+        background:
+          "linear-gradient(to bottom, var(--dblue), var(--black), var(--bblue))",
       }}
     >
       <SectionTitle>About Me</SectionTitle>
@@ -96,7 +97,9 @@ export default function AboutSection() {
           </AboutNameAndBioContainer>
         </AboutInformationItem>
         <AboutInformationFullWidthItem>
-          <InfoSubtitle>Technical Skills</InfoSubtitle>
+          <InfoSubtitle className="mb-4 text-center">
+            Technical Skills
+          </InfoSubtitle>
           <SkillsTableCard />
         </AboutInformationFullWidthItem>
       </AboutInformationPanel>

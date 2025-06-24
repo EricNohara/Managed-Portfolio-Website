@@ -82,12 +82,14 @@ export default function ProjectsSection() {
         gyroControls: false,
         minHeight: 200.0,
         minWidth: 200.0,
-        scale: 1.0,
+        scale: 0.5,
         scaleMobile: 1.0,
-        points: 5.0,
-        maxDistance: 26.0,
-        spacing: 16.0,
+        points: 4.0,
+        maxDistance: 23.0,
+        spacing: 11.0,
         showDots: false,
+        backgroundColor: "#000000",
+        color: "#778da9",
       });
     }
     return () => {
@@ -103,7 +105,6 @@ export default function ProjectsSection() {
       id="projects"
       style={{ paddingTop: "60px", position: "relative", overflow: "hidden" }}
     >
-      {/* Vanta background */}
       <div
         ref={vantaRef}
         style={{
@@ -114,8 +115,16 @@ export default function ProjectsSection() {
           zIndex: 0,
         }}
       />
-      {/* Content above Vanta */}
-      <div style={{ position: "relative", zIndex: 1 }}>
+      <div
+        style={{
+          position: "relative",
+          zIndex: 1,
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          width: "100%",
+        }}
+      >
         <SectionTitle subtitle="click project name to view details">
           Projects
         </SectionTitle>

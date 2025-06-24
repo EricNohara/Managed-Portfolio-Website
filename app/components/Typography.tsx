@@ -42,7 +42,7 @@ export const ExperienceSectionDate = styled.h4`
   font-style: italic;
 `;
 
-export const ExperienceSubtitle = styled.b`
+export const AccordianSubtitle = styled.b`
   font-size: 1.2;
   color: white;
 `;

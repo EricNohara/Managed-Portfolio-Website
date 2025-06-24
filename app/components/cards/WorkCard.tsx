@@ -5,7 +5,7 @@ import formatDate from "@/utils/FormatDate";
 import {
   ExperienceSectionDate,
   ExperienceSectionName,
-  ExperienceSubtitle,
+  AccordianSubtitle,
 } from "../Typography";
 import { ExperiencePairContainer } from "../Containers";
 import Accordion from "@mui/material/Accordion";
@@ -61,7 +61,7 @@ export default function WorkCard() {
                 <div style={{ width: "100%" }}>
                   <ExperienceSectionName>{exp.company}</ExperienceSectionName>
                   <ExperiencePairContainer>
-                    <ExperienceSubtitle>{exp.job_title}</ExperienceSubtitle>
+                    <AccordianSubtitle>{exp.job_title}</AccordianSubtitle>
                     <ExperienceSectionDate>
                       {exp.date_start && exp.date_end
                         ? `${formatDate(exp.date_start)} - ${formatDate(

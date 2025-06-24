@@ -132,7 +132,7 @@ export default function SkillsTableCard() {
         height: 425,
         width: "100%",
         background: "var(--dblue)",
-        border: "2px solid var(--secondary)",
+        border: "2px solid var(--dsecondary)",
       }}
     >
       <TableVirtuoso

@@ -7,44 +7,39 @@ const ContactFormContainer = styled.form`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: var(--dblue2);
   border-radius: 10px;
-  width: 80%;
+  width: 70%;
   height: 500px;
   margin-bottom: 60px;
   padding: 10%;
-  gap: 2rem;
+  gap: 1.25rem;
 `;
 
 const ContactTextInput = styled.input`
   padding: 1rem;
   font-size: 1.1rem;
-  background-color: var(--dblue);
+  background-color: var(--dblue2);
   color: var(--txtgrey); // Use 'color' instead of 'text-color'
   width: 100%;
-  border-radius: 5px;
-  border: 1px solid var(--lblue);
+  border-radius: 10px;
   outline: none;
-  transition: border 0.2s;
   &:focus {
-    border: 1.5px solid var(--secondary);
+    border: 2px solid var(--secondary);
   }
 `;
 
 const ContactTextArea = styled.textarea`
   padding: 1rem;
   font-size: 1.1rem;
-  background-color: var(--dblue);
+  background-color: var(--dblue2);
   color: var(--txtgrey); // Use 'color' instead of 'text-color'
   width: 100%;
   min-height: 200px;
-  border-radius: 5px;
-  border: 1px solid var(--lblue);
+  border-radius: 10px;
   resize: none; // Prevents resizing
   outline: none;
-  transition: border 0.2s;
   &:focus {
-    border: 1.5px solid var(--secondary);
+    border: 2px solid var(--secondary);
   }
 `;
 
@@ -53,10 +48,11 @@ const ContactButton = styled.button`
   padding: 1rem;
   border: 2px solid var(--secondary);
   color: var(--secondary);
-  border-radius: 5px;
+  border-radius: 10px;
   width: 100%;
   text-transform: uppercase;
   transition: 0.2s ease;
+  background-color: var(--dblue2);
 
   &:hover {
     background-color: var(--secondary);
@@ -135,7 +131,7 @@ export default function ContactForm() {
           required
         />
         <ContactButton type="submit" disabled={status === "sending"}>
-          {status === "sending" ? "Sending..." : "Send Email"}
+          {status === "sending" ? "Sending..." : "Send"}
         </ContactButton>
       </ContactFormContainer>
       <Snackbar

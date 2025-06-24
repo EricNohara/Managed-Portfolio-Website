@@ -31,7 +31,7 @@ export default function ExperienceSection() {
       id="experience"
       style={{
         paddingTop: "60px",
-        background: "linear-gradient(to top, var(--dblue), var(--black))",
+        background: "linear-gradient(to top, var(--black), var(--bblue))",
       }}
     >
       <SectionTitle>Experience</SectionTitle>
