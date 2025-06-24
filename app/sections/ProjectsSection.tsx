@@ -136,6 +136,7 @@ export default function ProjectsSection() {
           width: "100%",
           height: "100%",
           zIndex: 0,
+          pointerEvents: "none",
         }}
       />
       <div
@@ -158,11 +159,12 @@ export default function ProjectsSection() {
               [...userData.projects]
                 .sort((a, b) => b.name.length - a.name.length)
                 .map((proj) => (
-                  <ScrollAnimation key={proj.name}>
-                    <ProjectListItem onClick={() => setSelectedProject(proj)}>
-                      {proj.name}
-                    </ProjectListItem>
-                  </ScrollAnimation>
+                  <ProjectListItem
+                    key={proj.id}
+                    onClick={() => setSelectedProject(proj)}
+                  >
+                    {proj.name}
+                  </ProjectListItem>
                 ))}
           </ProjectList>
         </ProjectListContainer>

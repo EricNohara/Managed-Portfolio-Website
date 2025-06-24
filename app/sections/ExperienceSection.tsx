@@ -20,12 +20,11 @@ const ExperienceContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 2rem;
 `;
 
 export default function ExperienceSection() {
   const userData: IUserData | null = useUserDataContext();
-
-  console.log(userData?.education);
 
   return (
     <SectionContainer

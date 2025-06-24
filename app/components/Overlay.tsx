@@ -40,7 +40,7 @@ export const Modal = styled.div`
     var(--black) 100%
   );
   color: white;
-  padding: 2rem 3rem;
+  padding: 3rem;
   border-radius: 10px;
   width: 60vw;
   max-height: 80vh;

@@ -35,10 +35,7 @@ export default function EducationCard() {
       {userData &&
         userData.education &&
         userData.education.map((edu) => (
-          <div
-            style={{ marginBottom: "2rem", width: "100%" }}
-            key={edu.institution}
-          >
+          <div style={{ width: "100%" }} key={edu.institution}>
             <Accordion
               sx={{
                 width: "100%",

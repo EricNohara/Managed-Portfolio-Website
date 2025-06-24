@@ -34,7 +34,7 @@ export default function WorkCard() {
       {userData &&
         userData.experiences &&
         userData.experiences.map((exp) => (
-          <div style={{ marginBottom: "2rem" }} key={exp.company}>
+          <div key={exp.company}>
             <Accordion
               sx={{
                 width: "100%",

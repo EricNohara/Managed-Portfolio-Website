@@ -17,18 +17,20 @@ const bounceUp = {
 interface ScrollAnimationProps {
   children: ReactNode;
   style?: CSSProperties;
+  amount?: number;
 }
 
 export default function ScrollAnimation({
   children,
   style,
+  amount = 0.09,
 }: ScrollAnimationProps) {
   return (
     <motion.div
       variants={bounceUp}
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: false, amount: 0.09 }}
+      viewport={{ once: false, amount }}
       style={style}
     >
       {children}
