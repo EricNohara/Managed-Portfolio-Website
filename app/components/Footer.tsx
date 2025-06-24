@@ -4,7 +4,7 @@ import { IUserData } from "../interfaces/IUserData";
 import formatPhoneNumber from "@/utils/FormatPhoneNumber";
 
 const FooterText = styled.p`
-  color: grey;
+  color: var(--txtdarkgrey);
   font-style: italic;
   text-align: center;
   padding: 1rem;

@@ -28,6 +28,7 @@ export const InfoSubtitle = styled.h2.attrs(() => ({
 export const AboutDescription = styled.h3`
   font-size: 1.25rem;
   font-style: italic;
+  color: var(--txtdarkgrey);
 `;
 
 export const AboutBio = styled.p`
@@ -43,7 +44,7 @@ export const ExperienceSectionName = styled.h2`
 
 export const ExperienceSectionDate = styled.h4`
   font-size: 1.1rem;
-  color: grey;
+  color: var(--txtdarkgrey);
   font-style: italic;
 `;
 

@@ -1,11 +1,14 @@
 import styled from "styled-components";
 import { useUserDataContext } from "../context/UserDataProvider";
 import { IUserData } from "../interfaces/IUserData";
-import { SectionContainer } from "../components/Containers";
+import { SectionContainer, SplitContainer } from "../components/Containers";
 import SectionTitle from "../components/SectionTitle";
 import ImageCard from "../components/cards/ImageCard";
 import SkillsTableCard from "../components/tables/SkillsTableCard";
 import ScrollAnimation from "../components/ScrollAnimation";
+import PhoneIcon from "@mui/icons-material/Phone";
+import EmailIcon from "@mui/icons-material/Email";
+import formatPhoneNumber from "@/utils/FormatPhoneNumber";
 
 import {
   InfoSubtitle,
@@ -86,6 +89,22 @@ export default function AboutSection() {
             <ScrollAnimation style={{ width: "100%", height: "100%" }}>
               <AboutNameAndDescriptionContainer>
                 <InfoSubtitle>{userData && userData.name}</InfoSubtitle>
+                <SplitContainer>
+                  <AboutDescription>
+                    <EmailIcon /> {userData && userData.email}
+                  </AboutDescription>
+                  <p
+                    style={{ fontSize: "1.4rem", color: "var(--txtdarkgrey)" }}
+                  >
+                    |
+                  </p>
+                  <AboutDescription>
+                    <PhoneIcon />{" "}
+                    {userData &&
+                      userData.phone_number &&
+                      formatPhoneNumber(userData.phone_number)}
+                  </AboutDescription>
+                </SplitContainer>
                 <AboutDescription>
                   {userData && userData.location}
                 </AboutDescription>

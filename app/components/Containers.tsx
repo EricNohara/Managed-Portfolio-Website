@@ -78,3 +78,10 @@ export const ExperienceTitleContainer = styled.div`
   gap: 2rem;
   margin-bottom: 1rem;
 `;
+
+export const SplitContainer = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  width: 100%;
+`;

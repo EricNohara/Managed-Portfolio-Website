@@ -49,7 +49,9 @@ export default function SectionTitle({
     <SectionTitleContainer>
       <SectionTitleText>{children}</SectionTitleText>
       {subtitle && (
-        <p style={{ fontSize: "1.2rem", color: "grey" }}>{subtitle}</p>
+        <p style={{ fontSize: "1.2rem", color: "var(--txtdarkgrey)" }}>
+          {subtitle}
+        </p>
       )}
       <SectionTitleDivider ref={dividerRef} expanded={expanded} />
     </SectionTitleContainer>
