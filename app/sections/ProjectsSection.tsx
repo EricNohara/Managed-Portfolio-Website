@@ -23,6 +23,7 @@ import {
 } from "../components/Containers";
 
 import React, { useState, useEffect, useRef } from "react";
+import { createPortal } from "react-dom";
 
 const ProjectList = styled.ul`
   list-style: none;
@@ -64,6 +65,11 @@ export default function ProjectsSection() {
     null
   );
 
+  // For fade in/out
+  const [showOverlay, setShowOverlay] = useState(false);
+  const [shouldRenderOverlay, setShouldRenderOverlay] = useState(false);
+  const [modalProject, setModalProject] = useState<IUserProject | null>(null);
+
   // Vanta ref and effect
   const vantaRef = useRef<HTMLDivElement>(null);
   const vantaEffect = useRef<any>(null);
@@ -99,6 +105,22 @@ export default function ProjectsSection() {
       }
     };
   }, []);
+
+  // Handle overlay fade in/out
+  useEffect(() => {
+    if (selectedProject) {
+      setModalProject(selectedProject);
+      setShouldRenderOverlay(true);
+      setTimeout(() => setShowOverlay(true), 10); // trigger fade-in
+    } else if (showOverlay) {
+      setShowOverlay(false); // trigger fade-out
+      setTimeout(() => {
+        setShouldRenderOverlay(false);
+        setModalProject(null);
+      }, 350); // match animation duration
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [selectedProject]);
 
   return (
     <SectionContainer
@@ -144,57 +166,68 @@ export default function ProjectsSection() {
                 ))}
           </ProjectList>
         </ProjectListContainer>
-        {selectedProject && (
-          <Overlay onClick={() => setSelectedProject(null)}>
-            <Modal onClick={(e) => e.stopPropagation()}>
-              <CloseButton onClick={() => setSelectedProject(null)}>
-                <CloseIcon />
-              </CloseButton>
-              <ProjectInfoContainer>
-                <div
-                  style={{ display: "flex", gap: "2rem", paddingRight: "2rem" }}
-                >
-                  <ProjectTitle>{selectedProject.name}</ProjectTitle>
-                  <IconsContainer>
-                    {selectedProject.github_url && (
-                      <SocialIconLink
-                        href={selectedProject.github_url}
-                        label="Github URL"
-                      >
-                        <GitHubIcon fontSize="large" />
-                      </SocialIconLink>
+        {shouldRenderOverlay &&
+          createPortal(
+            <Overlay
+              $visible={showOverlay}
+              onClick={() => setSelectedProject(null)}
+            >
+              <Modal onClick={(e) => e.stopPropagation()}>
+                <CloseButton onClick={() => setSelectedProject(null)}>
+                  <CloseIcon />
+                </CloseButton>
+                {modalProject && (
+                  <ProjectInfoContainer>
+                    <div
+                      style={{
+                        display: "flex",
+                        gap: "2rem",
+                        paddingRight: "2rem",
+                      }}
+                    >
+                      <ProjectTitle>{modalProject.name}</ProjectTitle>
+                      <IconsContainer>
+                        {modalProject.github_url && (
+                          <SocialIconLink
+                            href={modalProject.github_url}
+                            label="Github URL"
+                          >
+                            <GitHubIcon fontSize="large" />
+                          </SocialIconLink>
+                        )}
+                        {modalProject.demo_url && (
+                          <SocialIconLink
+                            href={modalProject.demo_url}
+                            label="Demo URL"
+                          >
+                            <LinkIcon fontSize="large" />
+                          </SocialIconLink>
+                        )}
+                      </IconsContainer>
+                    </div>
+                    <ProjectSubtitleContainer>
+                      <ProjectSubtitle>
+                        {formatDate(modalProject.date_start)} -{" "}
+                        {formatDate(modalProject.date_end)}
+                      </ProjectSubtitle>
+                      <ProjectSubtitle>
+                        {joinSubtitle(
+                          modalProject.languages_used,
+                          modalProject.frameworks_used,
+                          modalProject.technologies_used
+                        )}
+                      </ProjectSubtitle>
+                    </ProjectSubtitleContainer>
+                    {modalProject.thumbnail_url && (
+                      <ImageCard imageUrl={modalProject.thumbnail_url} />
                     )}
-                    {selectedProject.demo_url && (
-                      <SocialIconLink
-                        href={selectedProject.demo_url}
-                        label="Demo URL"
-                      >
-                        <LinkIcon fontSize="large" />
-                      </SocialIconLink>
-                    )}
-                  </IconsContainer>
-                </div>
-                <ProjectSubtitleContainer>
-                  <ProjectSubtitle>
-                    {formatDate(selectedProject.date_start)} -{" "}
-                    {formatDate(selectedProject.date_end)}
-                  </ProjectSubtitle>
-                  <ProjectSubtitle>
-                    {joinSubtitle(
-                      selectedProject.languages_used,
-                      selectedProject.frameworks_used,
-                      selectedProject.technologies_used
-                    )}
-                  </ProjectSubtitle>
-                </ProjectSubtitleContainer>
-                {selectedProject.thumbnail_url && (
-                  <ImageCard imageUrl={selectedProject.thumbnail_url} />
+                    <NormalText>{modalProject.description}</NormalText>
+                  </ProjectInfoContainer>
                 )}
-                <NormalText>{selectedProject.description}</NormalText>
-              </ProjectInfoContainer>
-            </Modal>
-          </Overlay>
-        )}
+              </Modal>
+            </Overlay>,
+            document.body
+          )}
       </div>
     </SectionContainer>
   );

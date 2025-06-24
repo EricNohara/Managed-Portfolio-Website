@@ -20,7 +20,7 @@ export default function Home() {
       <HomeSectionContainer
         style={{
           background:
-            "radial-gradient(circle at center, var(--dblue2) 20%, var(--black) 100%);",
+            "radial-gradient(circle at center, var(--dblue2) 20%, var(--black) 100%)",
         }}
       >
         <LoadingSpinner />

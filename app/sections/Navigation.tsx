@@ -14,7 +14,7 @@ const NavBar = styled.nav`
   background-color: rgba(49, 49, 49, 0.99);
   position: sticky;
   top: 0;
-  z-index: 1000;
+  z-index: 100;
 `;
 
 const NavList = styled.ul`

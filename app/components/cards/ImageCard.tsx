@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
+import LoadingSpinner from "../LoadingSpinner";
 
 interface ImageCardProps {
   imageUrl: string;
@@ -12,16 +13,41 @@ interface ImageCardProps {
 const CardLink = styled.a`
   border-radius: 10px;
   text-decoration: none;
+  display: block;
+  position: relative;
 `;
 
 const CardImage = styled.img.withConfig({
-  shouldForwardProp: (prop) => prop !== "flipped",
-})<{ flipped?: boolean }>`
+  shouldForwardProp: (prop) => prop !== "flipped" && prop !== "loaded",
+})<{ flipped?: boolean; loaded?: boolean }>`
   object-fit: cover;
   border-radius: 10px;
   width: 100%;
   height: 100%;
+  opacity: ${({ loaded }) => (loaded ? 1 : 0)};
+  transition: opacity 0.5s;
   ${({ flipped }) => flipped && "transform: scaleX(-1);"}
+  display: block;
+`;
+
+const ImageWrapper = styled.div`
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 200px;
+`;
+
+const Loader = styled.div`
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(17, 24, 36, 0.1);
+  border-radius: 10px;
+  z-index: 1;
+  font-size: 1.2rem;
+  color: var(--txtgrey);
 `;
 
 const ImageCard: React.FC<ImageCardProps> = ({
@@ -30,14 +56,34 @@ const ImageCard: React.FC<ImageCardProps> = ({
   link = "",
   flipped = false,
 }) => {
+  const [loaded, setLoaded] = useState(false);
+
+  const image = (
+    <ImageWrapper>
+      {!loaded && (
+        <Loader>
+          <LoadingSpinner />
+        </Loader>
+      )}
+      <CardImage
+        src={imageUrl}
+        alt={alt}
+        flipped={flipped}
+        loaded={loaded}
+        loading="lazy"
+        onLoad={() => setLoaded(true)}
+      />
+    </ImageWrapper>
+  );
+
   if (link !== "") {
     return (
       <CardLink href={link} target="_blank" rel="noopener noreferrer">
-        <CardImage src={imageUrl} alt={alt} flipped={flipped} />
+        {image}
       </CardLink>
     );
   } else {
-    return <CardImage src={imageUrl} alt={alt} flipped={flipped} />;
+    return image;
   }
 };
 
