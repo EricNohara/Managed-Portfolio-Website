@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import React, { useState } from "react";
 import { Alert, Snackbar } from "@mui/material";
-import ScrollAnimation from "../components/ScrollAnimation";
+import { ScrollAnimation } from "../components/ScrollAnimation";
 
 const ContactFormContainer = styled.form`
   display: flex;

@@ -5,7 +5,7 @@ import { SectionContainer, SplitContainer } from "../components/Containers";
 import SectionTitle from "../components/SectionTitle";
 import ImageCard from "../components/cards/ImageCard";
 import SkillsTableCard from "../components/tables/SkillsTableCard";
-import ScrollAnimation from "../components/ScrollAnimation";
+import { ScrollAnimation } from "../components/ScrollAnimation";
 import PhoneIcon from "@mui/icons-material/Phone";
 import EmailIcon from "@mui/icons-material/Email";
 import formatPhoneNumber from "@/utils/FormatPhoneNumber";
@@ -60,9 +60,7 @@ const AboutNameAndDescriptionContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 5%;
-  width: 100%;
-  height: 100%;
-  padding: 5%;
+  padding: 4.51%;
   background-color: var(--dblue);
   border-radius: 10px;
   box-sizing: border-box;
@@ -163,7 +161,7 @@ export default function AboutSection() {
                 </AboutDescription>
               </AboutNameAndDescriptionContainer>
             </ScrollAnimation>
-            <ScrollAnimation>
+            <ScrollAnimation style={{ width: "100%", height: "100%" }}>
               <AboutBio>{userData && userData.bio && userData.bio}</AboutBio>
             </ScrollAnimation>
           </AboutNameAndBioContainer>

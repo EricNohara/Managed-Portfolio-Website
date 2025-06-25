@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { ReactNode, useEffect, useRef, useState } from "react";
 import { SectionTitleText, NormalText } from "./Typography";
-import ScrollAnimation from "./ScrollAnimation";
+import { ScrollAnimation } from "./ScrollAnimation";
 
 const SectionTitleContainer = styled.div`
   display: flex;

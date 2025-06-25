@@ -3,7 +3,7 @@ import { SectionContainer } from "../components/Containers";
 import SectionTitle from "../components/SectionTitle";
 import EducationCard from "../components/cards/EducationCard";
 import WorkCard from "../components/cards/WorkCard";
-import ScrollAnimation from "../components/ScrollAnimation";
+import { ScrollAnimation } from "../components/ScrollAnimation";
 
 const ExperienceInfoContainer = styled.div`
   display: grid;

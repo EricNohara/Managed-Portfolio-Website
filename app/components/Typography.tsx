@@ -73,7 +73,7 @@ export const AboutDescription = styled.h3`
 `;
 
 export const AboutBio = styled.p`
-  padding: 5%;
+  padding: 4.51%;
   background-color: var(--dblue);
   border-radius: 10px;
 
@@ -104,15 +104,15 @@ export const ExperienceSectionName = styled.h2`
 `;
 
 export const ExperienceSectionDate = styled.h4`
-  font-size: 1.1rem;
+  font-size: 1rem;
   color: var(--txtdarkgrey);
   font-style: italic;
 
   @media (max-width: 900px) {
-    font-size: 1rem;
+    font-size: 0.9rem;
   }
   @media (max-width: 600px) {
-    font-size: 0.9rem;
+    font-size: 0.8rem;
   }
   @media (max-width: 400px) {
     font-size: 0.7rem;
@@ -151,15 +151,15 @@ export const ProjectTitle = styled.h2.attrs(() => ({
 `;
 
 export const ProjectSubtitle = styled.h4`
-  font-size: 1.1rem;
+  font-size: 1rem;
   color: grey;
   font-style: italic;
 
   @media (max-width: 900px) {
-    font-size: 1rem;
+    font-size: 0.9rem;
   }
   @media (max-width: 600px) {
-    font-size: 0.9rem;
+    font-size: 0.8rem;
   }
   @media (max-width: 400px) {
     font-size: 0.7rem;
