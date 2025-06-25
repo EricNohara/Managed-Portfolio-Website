@@ -40,6 +40,14 @@ const ImageWrapper = styled.div`
   width: 100%;
   height: 100%;
   min-height: 200px;
+
+  @media (max-width: 900px) {
+    max-height: 150px;
+  }
+
+  @media (max-width: 600px) {
+    max-height: 100px;
+  }
 `;
 
 const Loader = styled.div`

@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { ReactNode, useEffect, useRef, useState } from "react";
-import { SectionTitleText } from "./Typography";
+import { SectionTitleText, NormalText } from "./Typography";
 import ScrollAnimation from "./ScrollAnimation";
 
 const SectionTitleContainer = styled.div`
@@ -60,9 +60,9 @@ export default function SectionTitle({
         <TitleBlock>
           <SectionTitleText>{children}</SectionTitleText>
           {subtitle && (
-            <p style={{ fontSize: "1.2rem", color: "var(--txtdarkgrey)" }}>
+            <NormalText style={{ color: "var(--txtdarkgrey)" }}>
               {subtitle}
-            </p>
+            </NormalText>
           )}
           <SectionTitleDivider ref={dividerRef} expanded={expanded} />
         </TitleBlock>

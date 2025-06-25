@@ -1,6 +1,4 @@
 import styled from "styled-components";
-import { useUserDataContext } from "../context/UserDataProvider";
-import { IUserData } from "../interfaces/IUserData";
 import { SectionContainer } from "../components/Containers";
 import SectionTitle from "../components/SectionTitle";
 import EducationCard from "../components/cards/EducationCard";
@@ -11,6 +9,13 @@ const ExperienceInfoContainer = styled.div`
   display: grid;
   grid-template-columns: 35em 35em;
   gap: 4em;
+
+  @media (max-width: 900px) {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    gap: 1em;
+    padding: 0 1rem;
+  }
 `;
 
 const ExperienceContainer = styled.div`
@@ -24,8 +29,6 @@ const ExperienceContainer = styled.div`
 `;
 
 export default function ExperienceSection() {
-  const userData: IUserData | null = useUserDataContext();
-
   return (
     <SectionContainer
       id="experience"

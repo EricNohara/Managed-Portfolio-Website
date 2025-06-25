@@ -6,6 +6,7 @@ import {
   ExperienceSectionDate,
   ExperienceSectionName,
   AccordianSubtitle,
+  NormalText,
 } from "../Typography";
 import { ExperiencePairContainer } from "../Containers";
 import Accordion from "@mui/material/Accordion";
@@ -75,13 +76,11 @@ export default function WorkCard() {
                 </div>
               </AccordionSummary>
               <AccordionDetails>
-                {exp.job_description && exp.job_description !== "" ? (
-                  <div style={{ color: "var(--txtgrey" }}>
-                    {exp.job_description}
-                  </div>
-                ) : (
-                  <i>No description provided.</i>
-                )}
+                <NormalText>
+                  {exp.job_description && exp.job_description !== ""
+                    ? exp.job_description
+                    : "No description provided."}
+                </NormalText>
               </AccordionDetails>
             </Accordion>
           </div>

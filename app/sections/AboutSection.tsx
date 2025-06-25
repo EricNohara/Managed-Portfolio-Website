@@ -21,6 +21,13 @@ const AboutInformationPanel = styled.div`
   grid-template-columns: 20em 35em;
   grid-template-rows: 20em 35em;
   gap: 1.5em;
+
+  @media (max-width: 900px) {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    gap: 1em;
+    padding: 0 1rem; // Add horizontal padding for mobile
+  }
 `;
 
 const AboutInformationItem = styled.div`
@@ -57,6 +64,10 @@ const AboutInformationFullWidthItem = styled.div`
   background-color: var(--dblue2);
   padding: 3% 4%;
   border-radius: 10px;
+
+  @media (max-width: 900px) {
+    grid-column: 1 / span 1;
+  }
 `;
 
 export default function AboutSection() {
