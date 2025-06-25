@@ -67,14 +67,14 @@ const ProjectListItem = styled.li`
 `;
 
 const TitleLinksContainer = styled.div`
-  display: flex,
-  gap: 2rem,
-  paddingRight: 2rem,
+  display: flex;
+  gap: 2rem;
+  padding-right: 2rem;
 
   @media (max-width: 600px) {
     flex-direction: column;
     align-items: center;
-\  }
+  }
 `;
 
 const joinSubtitle = (
