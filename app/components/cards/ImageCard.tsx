@@ -42,11 +42,13 @@ const ImageWrapper = styled.div`
   min-height: 200px;
 
   @media (max-width: 900px) {
-    max-height: 150px;
+    min-height: 150px;
+    min-width: 150px;
   }
 
   @media (max-width: 600px) {
-    max-height: 100px;
+    min-height: 100px;
+    min-width: 100px;
   }
 `;
 

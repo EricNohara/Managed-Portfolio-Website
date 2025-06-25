@@ -9,6 +9,7 @@ import ScrollAnimation from "../components/ScrollAnimation";
 import PhoneIcon from "@mui/icons-material/Phone";
 import EmailIcon from "@mui/icons-material/Email";
 import formatPhoneNumber from "@/utils/FormatPhoneNumber";
+import { useEffect, useState } from "react";
 
 import {
   InfoSubtitle,
@@ -34,6 +35,11 @@ const AboutInformationItem = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+
+  @media (max-width: 900px) {
+    min-height: 130px;
+    width: 100%;
+  }
 `;
 
 const AboutNameAndBioContainer = styled.div`
@@ -44,6 +50,10 @@ const AboutNameAndBioContainer = styled.div`
   gap: 1.5em;
   width: 100%;
   height: 100%;
+
+  @media (max-width: 900px) {
+    gap: 1em;
+  }
 `;
 
 const AboutNameAndDescriptionContainer = styled.div`
@@ -70,8 +80,40 @@ const AboutInformationFullWidthItem = styled.div`
   }
 `;
 
+const FormattedPhoneIcon = styled(PhoneIcon)`
+  @media (max-width: 900px) {
+    font-size: 2rem;
+  }
+  @media (max-width: 600px) {
+    font-size: 1.5rem;
+  }
+  @media (max-width: 400px) {
+    font-size: 1rem;
+  }
+`;
+
+const FormattedEmailIcon = styled(EmailIcon)`
+  @media (max-width: 900px) {
+    font-size: 2rem;
+  }
+  @media (max-width: 600px) {
+    font-size: 1.5rem;
+  }
+  @media (max-width: 400px) {
+    font-size: 1rem;
+  }
+`;
+
 export default function AboutSection() {
   const userData: IUserData | null = useUserDataContext();
+  const [isWide, setIsWide] = useState(true);
+
+  useEffect(() => {
+    const checkWidth = () => setIsWide(window.innerWidth > 900);
+    checkWidth();
+    window.addEventListener("resize", checkWidth);
+    return () => window.removeEventListener("resize", checkWidth);
+  }, []);
 
   return (
     <SectionContainer
@@ -102,7 +144,7 @@ export default function AboutSection() {
                 <InfoSubtitle>{userData && userData.name}</InfoSubtitle>
                 <SplitContainer>
                   <AboutDescription>
-                    <EmailIcon /> {userData && userData.email}
+                    <FormattedEmailIcon /> {userData && userData.email}
                   </AboutDescription>
                   <p
                     style={{ fontSize: "1.4rem", color: "var(--txtdarkgrey)" }}
@@ -110,7 +152,7 @@ export default function AboutSection() {
                     |
                   </p>
                   <AboutDescription>
-                    <PhoneIcon />{" "}
+                    <FormattedPhoneIcon />{" "}
                     {userData &&
                       userData.phone_number &&
                       formatPhoneNumber(userData.phone_number)}
@@ -130,7 +172,9 @@ export default function AboutSection() {
             </ScrollAnimation>
           </AboutNameAndBioContainer>
         </AboutInformationItem>
-        <ScrollAnimation style={{ gridColumn: "1 /span 2" }}>
+        <ScrollAnimation
+          style={isWide ? { gridColumn: "1 / span 2" } : undefined}
+        >
           <AboutInformationFullWidthItem>
             <InfoSubtitle className="mb-4 text-center">
               Technical Skills

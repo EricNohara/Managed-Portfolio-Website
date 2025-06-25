@@ -13,9 +13,13 @@ import { TableVirtuoso, TableComponents } from "react-virtuoso";
 import { titleFont, font } from "@/app/style/fonts/localFonts";
 
 const columns = [
-  { dataKey: "name", label: "Name", width: 160 },
-  { dataKey: "proficiency", label: "Proficiency (0-10)", width: 160 },
-  { dataKey: "years_of_experience", label: "Years of Experience", width: 180 },
+  { dataKey: "name", label: "Name", width: "32%" },
+  { dataKey: "proficiency", label: "Proficiency (0-10)", width: "32%" },
+  {
+    dataKey: "years_of_experience",
+    label: "Years of Experience",
+    width: "36%",
+  },
 ] as const;
 
 type Skill = IUserSkill;
@@ -94,6 +98,11 @@ export default function SkillsTableCard() {
               sx={{
                 color: "#fff",
                 fontFamily: titleFont.style.fontFamily,
+                fontSize: {
+                  xs: "0.9rem",
+                  sm: "1rem",
+                  md: "1.1rem",
+                },
                 "&.Mui-active": { color: "#fff" },
                 "& .MuiTableSortLabel-icon": { color: "#fff !important" },
                 "&:hover": {
@@ -119,10 +128,18 @@ export default function SkillsTableCard() {
           <TableCell
             key={column.dataKey}
             align="left"
-            style={{
+            sx={{
               color: "white",
               background: "var(--dblue)",
               fontFamily: font.style.fontFamily,
+              fontSize: {
+                xs: "0.85rem", // <600px
+                sm: "0.9rem", // 600px+
+                md: "0.95rem", // 900px+
+              },
+              whiteSpace: "nowrap",
+              overflow: "hidden",
+              textOverflow: "ellipsis",
             }}
           >
             {skill[column.dataKey] ?? "-"}

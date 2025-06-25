@@ -100,6 +100,11 @@ export default function CoursesTable({ courses }: CoursesTableProps) {
                 sx={{
                   color: "#fff",
                   fontFamily: titleFont.style.fontFamily,
+                  fontSize: {
+                    xs: "0.9rem",
+                    sm: "1rem",
+                    md: "1.1rem",
+                  },
                   "&.Mui-active": { color: "#fff" },
                   "& .MuiTableSortLabel-icon": { color: "#fff !important" },
                   "&:hover": {
@@ -128,10 +133,15 @@ export default function CoursesTable({ courses }: CoursesTableProps) {
           <TableCell
             key={column.dataKey}
             align="left"
-            style={{
+            sx={{
               color: "white",
               background: "var(--dblue)",
               fontFamily: font.style.fontFamily,
+              fontSize: {
+                xs: "0.85rem", // <600px
+                sm: "0.9rem", // 600px+
+                md: "0.95rem", // 900px+
+              },
             }}
           >
             {course[column.dataKey] ?? "-"}
