@@ -164,12 +164,7 @@ export default function AboutSection() {
               </AboutNameAndDescriptionContainer>
             </ScrollAnimation>
             <ScrollAnimation>
-              <AboutBio>
-                I&apos;m a rising senior at Boston University pursuing a
-                master&apos;s degree in Computer Science. I&apos;m interested in
-                computer systems, web and game development, and machine
-                learning!
-              </AboutBio>
+              <AboutBio>{userData && userData.bio && userData.bio}</AboutBio>
             </ScrollAnimation>
           </AboutNameAndBioContainer>
         </AboutInformationItem>
