@@ -165,9 +165,10 @@ export default function AboutSection() {
             </ScrollAnimation>
             <ScrollAnimation>
               <AboutBio>
-                I'm a rising senior at Boston University pursuing a master's
-                degree in Computer Science. I'm interested in computer systems,
-                web and game development, and machine learning!
+                I&apos;m a rising senior at Boston University pursuing a
+                master&apos;s degree in Computer Science. I&apos;m interested in
+                computer systems, web and game development, and machine
+                learning!
               </AboutBio>
             </ScrollAnimation>
           </AboutNameAndBioContainer>

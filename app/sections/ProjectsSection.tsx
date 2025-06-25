@@ -102,15 +102,22 @@ export default function ProjectsSection() {
 
   // Vanta ref and effect
   const vantaRef = useRef<HTMLDivElement>(null);
-  const vantaEffect = useRef<any>(null);
+  const vantaEffect = useRef<{ destroy: () => void } | null>(null);
 
   useEffect(() => {
-    if (window.innerWidth <= 900) setIsSmall(true);
-    else setIsSmall(false);
+    const handleResize = () => {
+      setIsSmall(window.innerWidth <= 900);
+    };
+    window.addEventListener("resize", handleResize);
+    // Set initial value
+    handleResize();
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
-    // @ts-ignore
+  useEffect(() => {
+    // @ts-expect-error vanta
     const NET = window.VANTA && window.VANTA.NET;
-    // @ts-ignore
+    // @ts-expect-error vanta
     const THREE = window.THREE;
     if (NET && THREE && vantaRef.current && !vantaEffect.current) {
       vantaEffect.current = NET({
@@ -137,7 +144,7 @@ export default function ProjectsSection() {
         vantaEffect.current = null;
       }
     };
-  }, []);
+  }, [isSmall]);
 
   // Handle overlay fade in/out
   useEffect(() => {

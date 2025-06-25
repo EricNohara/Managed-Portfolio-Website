@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./style/globals.css";
 import { UserDataProvider } from "./context/UserDataProvider";
 import { font } from "./style/fonts/localFonts";
+import Script from "next/script";
 
 export const metadata: Metadata = {
   title: "Managed Portfolio Website",
@@ -16,9 +17,18 @@ export default function RootLayout({
     <html lang="en" className={font.className}>
       <body>
         <UserDataProvider>{children}</UserDataProvider>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.waves.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.net.min.js"></script>
+        <Script
+          src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"
+          strategy="afterInteractive"
+        />
+        <Script
+          src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.waves.min.js"
+          strategy="afterInteractive"
+        />
+        <Script
+          src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.net.min.js"
+          strategy="afterInteractive"
+        />
       </body>
     </html>
   );

@@ -7,6 +7,8 @@ const userEmail: string = process.env.USER_EMAIL;
 
 // used to retrieve user data from the portfolio manager
 export async function GET(_req: NextRequest) {
+  console.log(_req);
+
   if (!apiUrl || !apiKey || !userEmail) {
     return NextResponse.json(
       { message: "Missing required env variables" },

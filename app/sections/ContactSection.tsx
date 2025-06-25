@@ -1,12 +1,8 @@
-import { useUserDataContext } from "../context/UserDataProvider";
-import { IUserData } from "../interfaces/IUserData";
 import { SectionContainer } from "../components/Containers";
 import SectionTitle from "../components/SectionTitle";
 import ContactForm from "../components/ContactForm";
 
 export default function ContactSection() {
-  const userData: IUserData | null = useUserDataContext();
-
   return (
     <SectionContainer
       id="contact"

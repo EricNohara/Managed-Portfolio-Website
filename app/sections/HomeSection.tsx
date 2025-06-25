@@ -57,12 +57,12 @@ const socialLinks = [
 export default function HomeSection() {
   const userData: IUserData | null = useUserDataContext();
   const vantaRef = useRef<HTMLDivElement>(null);
-  const vantaEffect = useRef<any>(null);
+  const vantaEffect = useRef<{ destroy: () => void } | null>(null);
 
   useEffect(() => {
-    // @ts-ignore
+    // @ts-expect-error vanta
     const WAVES = window.VANTA && window.VANTA.WAVES;
-    // @ts-ignore
+    // @ts-expect-error vanta
     const THREE = window.THREE;
     if (WAVES && THREE && vantaRef.current && !vantaEffect.current) {
       vantaEffect.current = WAVES({
@@ -117,7 +117,7 @@ export default function HomeSection() {
         <HomeSectionTextContainer>
           {userData && userData.name && (
             <HomeSectionText>
-              Hey I'm{" "}
+              Hey I&apos;m{" "}
               <HomeSectionNameText>
                 {userData.linkedin_url ? (
                   <ExternalLink href={userData.linkedin_url}>
@@ -131,7 +131,7 @@ export default function HomeSection() {
             </HomeSectionText>
           )}
           <HomeSectionText>
-            I'm a software developer and college student.
+            I&apos;m a software developer and college student.
           </HomeSectionText>
         </HomeSectionTextContainer>
         <ScrollButton targetId="about">Find Out More</ScrollButton>

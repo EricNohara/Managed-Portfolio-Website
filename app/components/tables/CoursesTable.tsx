@@ -23,32 +23,44 @@ interface CoursesTableProps {
   courses: ICourse[];
 }
 
+const Scroller = React.forwardRef<HTMLDivElement>((props, ref) => (
+  <TableContainer
+    {...props}
+    ref={ref}
+    className="redScrollbar"
+    sx={{
+      backgroundColor: "var(--dblue)",
+      maxHeight: "100%",
+    }}
+  />
+));
+Scroller.displayName = "VirtuosoScroller";
+
+const TableComp = (props: React.ComponentProps<typeof Table>) => (
+  <Table
+    {...props}
+    stickyHeader
+    sx={{ borderCollapse: "separate", tableLayout: "fixed" }}
+  />
+);
+TableComp.displayName = "VirtuosoTable";
+
+const TableHeadComp = React.forwardRef<HTMLTableSectionElement>(
+  (props, ref) => <TableHead {...props} ref={ref} />
+);
+TableHeadComp.displayName = "VirtuosoTableHead";
+
+const TableBodyComp = React.forwardRef<HTMLTableSectionElement>(
+  (props, ref) => <TableBody {...props} ref={ref} />
+);
+TableBodyComp.displayName = "VirtuosoTableBody";
+
 const VirtuosoTableComponents: TableComponents<ICourse> = {
-  Scroller: React.forwardRef<HTMLDivElement>((props, ref) => (
-    <TableContainer
-      {...props}
-      ref={ref}
-      className="redScrollbar"
-      sx={{
-        backgroundColor: "var(--dblue)",
-        maxHeight: "100%",
-      }}
-    />
-  )),
-  Table: (props) => (
-    <Table
-      {...props}
-      stickyHeader
-      sx={{ borderCollapse: "separate", tableLayout: "fixed" }}
-    />
-  ),
-  TableHead: React.forwardRef<HTMLTableSectionElement>((props, ref) => (
-    <TableHead {...props} ref={ref} />
-  )),
+  Scroller,
+  Table: TableComp,
+  TableHead: TableHeadComp,
   TableRow,
-  TableBody: React.forwardRef<HTMLTableSectionElement>((props, ref) => (
-    <TableBody {...props} ref={ref} />
-  )),
+  TableBody: TableBodyComp,
 };
 
 export default function CoursesTable({ courses }: CoursesTableProps) {
