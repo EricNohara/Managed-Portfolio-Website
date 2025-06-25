@@ -198,9 +198,8 @@ export default function ProjectsSection() {
               [...userData.projects]
                 .sort((a, b) => b.name.length - a.name.length)
                 .map((proj) => (
-                  <ScrollAnimationLeft>
+                  <ScrollAnimationLeft key={proj.id}>
                     <ProjectListItem
-                      key={proj.id}
                       onClick={() => setSelectedProject(proj)}
                     >
                       {proj.name}
