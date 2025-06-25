@@ -11,6 +11,10 @@ const LoadingSpinnerContainer = styled.div`
 const LoadingMessage = styled.p`
   font-size: 1.25 rem;
   margin-top: 1rem;
+
+  @media (max-width: 600px) {
+    font-size: 1rem;
+  }
 `;
 
 export default function LoadingSpinner() {

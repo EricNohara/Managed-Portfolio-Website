@@ -14,6 +14,13 @@ const ContactFormContainer = styled.form`
   margin-bottom: 60px;
   padding: 10%;
   gap: 1.25rem;
+
+  @media (max-width: 600px) {
+    width: 90%;
+    padding: 2.5%;
+    gap: 0.75rem;
+    height: 400px;
+  }
 `;
 
 const ContactTextInput = styled.input`
@@ -26,6 +33,11 @@ const ContactTextInput = styled.input`
   outline: none;
   &:focus {
     border: 2px solid var(--secondary);
+  }
+
+  @media (max-width: 600px) {
+    font-size: 0.8rem;
+    padding: 0.75rem;
   }
 `;
 
@@ -41,6 +53,11 @@ const ContactTextArea = styled.textarea`
   outline: none;
   &:focus {
     border: 2px solid var(--secondary);
+  }
+
+  @media (max-width: 600px) {
+    font-size: 0.8rem;
+    padding: 0.75rem;
   }
 `;
 
@@ -60,6 +77,11 @@ const ContactButton = styled.button`
     color: white;
     transition: 0.3s ease;
     cursor: pointer;
+  }
+
+  @media (max-width: 600px) {
+    font-size: 0.8rem;
+    padding: 0.75rem;
   }
 `;
 

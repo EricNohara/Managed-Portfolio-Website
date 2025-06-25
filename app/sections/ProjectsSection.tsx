@@ -33,6 +33,12 @@ const ProjectList = styled.ul`
   align-items: end;
   margin-right: 4rem;
   gap: 1.5rem;
+
+  @media (max-width: 600px) {
+    margin-right: 2rem;
+    padding-left: 1.5rem;
+    gap: 1rem;
+  }
 `;
 
 const ProjectListItem = styled.li`
@@ -47,6 +53,28 @@ const ProjectListItem = styled.li`
     transition: color 0.2s ease;
     transition: transform 0.2s ease;
   }
+
+  @media (max-width: 900px) {
+    font-size: 2rem;
+    text-align: right;
+  }
+  @media (max-width: 600px) {
+    font-size: 1.5rem;
+  }
+  @media (max-width: 400px) {
+    font-size: 1rem;
+  }
+`;
+
+const TitleLinksContainer = styled.div`
+  display: flex,
+  gap: 2rem,
+  paddingRight: 2rem,
+
+  @media (max-width: 600px) {
+    flex-direction: column;
+    align-items: center;
+\  }
 `;
 
 const joinSubtitle = (
@@ -65,6 +93,7 @@ export default function ProjectsSection() {
   const [selectedProject, setSelectedProject] = useState<null | IUserProject>(
     null
   );
+  const [isSmall, setIsSmall] = useState<boolean>(false);
 
   // For fade in/out
   const [showOverlay, setShowOverlay] = useState(false);
@@ -76,6 +105,9 @@ export default function ProjectsSection() {
   const vantaEffect = useRef<any>(null);
 
   useEffect(() => {
+    if (window.innerWidth <= 900) setIsSmall(true);
+    else setIsSmall(false);
+
     // @ts-ignore
     const NET = window.VANTA && window.VANTA.NET;
     // @ts-ignore
@@ -87,8 +119,8 @@ export default function ProjectsSection() {
         mouseControls: true,
         touchControls: true,
         gyroControls: false,
-        minHeight: 200.0,
-        minWidth: 200.0,
+        minHeight: isSmall ? 100.0 : 200.0,
+        minWidth: isSmall ? 100.0 : 200.0,
         scale: 0.5,
         scaleMobile: 1.0,
         points: 4.0,
@@ -153,20 +185,22 @@ export default function ProjectsSection() {
           Projects
         </SectionTitle>
         <ProjectListContainer>
-          <ProjectList>
-            {userData &&
-              userData.projects &&
-              [...userData.projects]
-                .sort((a, b) => b.name.length - a.name.length)
-                .map((proj) => (
-                  <ProjectListItem
-                    key={proj.id}
-                    onClick={() => setSelectedProject(proj)}
-                  >
-                    {proj.name}
-                  </ProjectListItem>
-                ))}
-          </ProjectList>
+          <ScrollAnimation>
+            <ProjectList>
+              {userData &&
+                userData.projects &&
+                [...userData.projects]
+                  .sort((a, b) => b.name.length - a.name.length)
+                  .map((proj) => (
+                    <ProjectListItem
+                      key={proj.id}
+                      onClick={() => setSelectedProject(proj)}
+                    >
+                      {proj.name}
+                    </ProjectListItem>
+                  ))}
+            </ProjectList>
+          </ScrollAnimation>
         </ProjectListContainer>
         {shouldRenderOverlay &&
           createPortal(
@@ -175,18 +209,14 @@ export default function ProjectsSection() {
               onClick={() => setSelectedProject(null)}
             >
               <Modal onClick={(e) => e.stopPropagation()}>
-                <CloseButton onClick={() => setSelectedProject(null)}>
-                  <CloseIcon />
-                </CloseButton>
+                {!isSmall && (
+                  <CloseButton onClick={() => setSelectedProject(null)}>
+                    <CloseIcon />
+                  </CloseButton>
+                )}
                 {modalProject && (
                   <ProjectInfoContainer>
-                    <div
-                      style={{
-                        display: "flex",
-                        gap: "2rem",
-                        paddingRight: "2rem",
-                      }}
-                    >
+                    <TitleLinksContainer>
                       <ProjectTitle>{modalProject.name}</ProjectTitle>
                       <IconsContainer>
                         {modalProject.github_url && (
@@ -206,7 +236,7 @@ export default function ProjectsSection() {
                           </SocialIconLink>
                         )}
                       </IconsContainer>
-                    </div>
+                    </TitleLinksContainer>
                     <ProjectSubtitleContainer>
                       <ProjectSubtitle>
                         {formatDate(modalProject.date_start)} -{" "}

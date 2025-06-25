@@ -32,10 +32,10 @@ const NavListItem = styled.li`
   font-size: 1.25rem;
 
   @media (max-width: 900px) {
-    font-size: 1rem;
+    font-size: 1.1rem;
   }
   @media (max-width: 600px) {
-    font-size: 0.8rem;
+    font-size: 1rem;
   }
 `;
 

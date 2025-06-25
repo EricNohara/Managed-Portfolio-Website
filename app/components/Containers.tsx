@@ -62,6 +62,10 @@ export const ProjectInfoContainer = styled.div`
   width: 100%;
   padding: 0 2rem 2rem 2rem;
   gap: 1.5rem;
+
+  @media (max-width: 600px) {
+    padding: 0 1rem;
+  }
 `;
 
 export const ProjectSubtitleContainer = styled.div`

@@ -82,25 +82,25 @@ const AboutInformationFullWidthItem = styled.div`
 
 const FormattedPhoneIcon = styled(PhoneIcon)`
   @media (max-width: 900px) {
-    font-size: 2rem;
+    font-size: 1.9rem;
   }
   @media (max-width: 600px) {
-    font-size: 1.5rem;
+    font-size: 1rem;
   }
   @media (max-width: 400px) {
-    font-size: 1rem;
+    font-size: 0.8rem;
   }
 `;
 
 const FormattedEmailIcon = styled(EmailIcon)`
   @media (max-width: 900px) {
-    font-size: 2rem;
+    font-size: 1.9rem;
   }
   @media (max-width: 600px) {
-    font-size: 1.5rem;
+    font-size: 1rem;
   }
   @media (max-width: 400px) {
-    font-size: 1rem;
+    font-size: 0.8rem;
   }
 `;
 

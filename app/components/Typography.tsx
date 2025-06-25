@@ -140,13 +140,13 @@ export const ProjectTitle = styled.h2.attrs(() => ({
   font-size: 2.5rem;
 
   @media (max-width: 900px) {
-    font-size: 2.2rem;
+    font-size: 2rem;
   }
   @media (max-width: 600px) {
-    font-size: 1.7rem;
+    font-size: 1.5rem;
   }
   @media (max-width: 400px) {
-    font-size: 1.4rem;
+    font-size: 1.25rem;
   }
 `;
 

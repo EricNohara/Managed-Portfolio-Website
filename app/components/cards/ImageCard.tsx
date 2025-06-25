@@ -39,21 +39,9 @@ const ImageWrapper = styled.div`
   position: relative;
   width: 100%;
   height: 100%;
-  min-height: 200px;
-
-  @media (max-width: 900px) {
-    min-height: 150px;
-    min-width: 150px;
-  }
-
-  @media (max-width: 600px) {
-    min-height: 100px;
-    min-width: 100px;
-  }
 `;
 
 const Loader = styled.div`
-  position: absolute;
   inset: 0;
   display: flex;
   align-items: center;
@@ -63,12 +51,14 @@ const Loader = styled.div`
   z-index: 1;
   font-size: 1.2rem;
   color: var(--txtgrey);
+  padding: 10%;
 `;
 
 const ImageCard: React.FC<ImageCardProps> = ({
   imageUrl,
   alt = "",
   link = "",
+  title = "",
   flipped = false,
 }) => {
   const [loaded, setLoaded] = useState(false);
@@ -83,6 +73,7 @@ const ImageCard: React.FC<ImageCardProps> = ({
       <CardImage
         src={imageUrl}
         alt={alt}
+        title={title}
         flipped={flipped}
         loaded={loaded}
         loading="lazy"
@@ -91,15 +82,13 @@ const ImageCard: React.FC<ImageCardProps> = ({
     </ImageWrapper>
   );
 
-  if (link !== "") {
-    return (
-      <CardLink href={link} target="_blank" rel="noopener noreferrer">
-        {image}
-      </CardLink>
-    );
-  } else {
-    return image;
-  }
+  return link ? (
+    <CardLink href={link} target="_blank" rel="noopener noreferrer">
+      {image}
+    </CardLink>
+  ) : (
+    image
+  );
 };
 
 export default ImageCard;

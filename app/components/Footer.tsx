@@ -16,6 +16,10 @@ const CustomFooter = styled.footer`
 const FooterText = styled.p`
   color: var(--txtdarkgrey);
   font-style: italic;
+
+  @media (max-width: 600px) {
+    font-size: 0.7rem !important;
+  }
 `;
 
 export default function Footer() {

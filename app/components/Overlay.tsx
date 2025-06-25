@@ -49,6 +49,12 @@ export const Modal = styled.div`
   z-index: 100000;
   animation: ${fadeIn} 0.35s cubic-bezier(0.4, 0, 0.2, 1);
   backdrop-filter: blur(2px);
+
+  @media (max-width: 600px) {
+    width: 90%;
+    padding: 5% 1%;
+    gap: 0.75rem;
+  }
 `;
 
 export const CloseButton = styled.button`
@@ -66,5 +72,11 @@ export const CloseButton = styled.button`
   &:hover {
     background: var(--secondary);
     color: white;
+  }
+
+  @media (max-width: 600px) {
+    svg {
+      font-size: 1.5rem;
+    }
   }
 `;
