@@ -30,7 +30,12 @@ export default function Home() {
     );
 
   return (
-    <div>
+    <div
+      style={{
+        width: "100%",
+        maxWidth: "100%",
+      }}
+    >
       <HomeSection />
       <Navigation />
       <AboutSection />

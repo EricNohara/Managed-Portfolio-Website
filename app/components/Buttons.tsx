@@ -14,6 +14,13 @@ const OutlinedButton = styled.button`
     transform: translateY(4px);
     transition: box-shadow 0.2s, transform 0.2s;
   }
+
+  @media (max-width: 900px) {
+    font-size: 1rem;
+  }
+  @media (max-width: 600px) {
+    font-size: 0.8rem;
+  }
 `;
 
 interface ScrollButtonProps {

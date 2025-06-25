@@ -10,6 +10,12 @@ const Icon = styled.p`
     transition: color 0.2s ease;
     cursor: pointer;
   }
+
+  @media (max-width: 600px) {
+    svg {
+      font-size: 2rem;
+    }
+  }
 `;
 
 type SocialIconLinkProps = {

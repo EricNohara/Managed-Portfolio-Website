@@ -3,20 +3,26 @@ import { useUserDataContext } from "../context/UserDataProvider";
 import { IUserData } from "../interfaces/IUserData";
 import formatPhoneNumber from "@/utils/FormatPhoneNumber";
 
+const CustomFooter = styled.footer`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: radial-gradient(circle at center, var(--dblue2), var(--black));
+  border-top: 2px solid var(--lblue);
+  padding: 1rem;
+  gap: 1rem;
+`;
+
 const FooterText = styled.p`
   color: var(--txtdarkgrey);
   font-style: italic;
-  text-align: center;
-  padding: 1rem;
-  background: radial-gradient(circle at center, var(--dblue2), var(--black));
-  border-top: 2px solid var(--lblue);
 `;
 
 export default function Footer() {
   const userData: IUserData | null = useUserDataContext();
 
   return (
-    <footer>
+    <CustomFooter>
       <FooterText>
         &copy; {new Date().getFullYear()} {userData && userData.name}{" "}
         &nbsp;|&nbsp;{" "}
@@ -32,6 +38,6 @@ export default function Footer() {
           userData.phone_number &&
           formatPhoneNumber(userData.phone_number)}
       </FooterText>
-    </footer>
+    </CustomFooter>
   );
 }

@@ -52,13 +52,13 @@ const ContactButton = styled.button`
   border-radius: 10px;
   width: 100%;
   text-transform: uppercase;
-  transition: 0.1s ease;
+  transition: 0.3s ease;
   background-color: var(--dblue2);
 
   &:hover {
-    background-color: var(--secondary);
+    background-color: var(--dsecondary);
     color: white;
-    transition: 0.1s ease;
+    transition: 0.3s ease;
     cursor: pointer;
   }
 `;

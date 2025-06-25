@@ -4,6 +4,19 @@ import { titleFont } from "../style/fonts/localFonts";
 export const HomeSectionText = styled.p`
   font-size: 3rem;
   color: white;
+  text-align: center;
+
+  @media (max-width: 900px) {
+    font-size: 2rem;
+  }
+
+  @media (max-width: 600px) {
+    font-size: 1.8rem;
+  }
+
+  @media (max-width: 400px) {
+    font-size: 1.5rem;
+  }
 `;
 
 export const HomeSectionNameText = styled.span`

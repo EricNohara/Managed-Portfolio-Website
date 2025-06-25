@@ -6,8 +6,14 @@ export const HomeSectionContainer = styled.section`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  position: relative;
-  overflow: hidden;
+
+  @media (max-width: 900px) {
+    padding: 2rem 0;
+  }
+
+  @media (max-width: 600px) {
+    padding: 1rem 0;
+  }
 `;
 
 export const SectionContainer = styled.section`

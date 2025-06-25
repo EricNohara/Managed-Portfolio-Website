@@ -15,6 +15,11 @@ const CardLink = styled.a`
   text-decoration: none;
   display: block;
   position: relative;
+  transition: filter 0.3s ease;
+
+  &:hover img {
+    filter: brightness(1.15);
+  }
 `;
 
 const CardImage = styled.img.withConfig({
@@ -25,7 +30,7 @@ const CardImage = styled.img.withConfig({
   width: 100%;
   height: 100%;
   opacity: ${({ loaded }) => (loaded ? 1 : 0)};
-  transition: opacity 0.5s;
+  transition: opacity 0.5s, filter 0.2s;
   ${({ flipped }) => flipped && "transform: scaleX(-1);"}
   display: block;
 `;

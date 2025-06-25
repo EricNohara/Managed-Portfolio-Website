@@ -22,13 +22,21 @@ const NavBar = styled.nav.attrs(() => ({
 
 const NavList = styled.ul`
   display: flex;
-  gap: 15%;
+  gap: 5vw;
   justify-content: center;
   list-style: none;
+  flex-wrap: wrap;
 `;
 
 const NavListItem = styled.li`
   font-size: 1.25rem;
+
+  @media (max-width: 900px) {
+    font-size: 1rem;
+  }
+  @media (max-width: 600px) {
+    font-size: 0.8rem;
+  }
 `;
 
 const NavLink = styled(Link)<{ $active?: boolean }>`
