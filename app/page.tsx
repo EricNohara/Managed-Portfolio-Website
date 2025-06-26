@@ -15,8 +15,6 @@ import Footer from "./components/Footer";
 export default function Home() {
   const userData: IUserData | null = useUserDataContext();
 
-  console.log(userData);
-
   if (!userData)
     return (
       <HomeSectionContainer

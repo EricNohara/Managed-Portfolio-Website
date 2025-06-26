@@ -24,8 +24,6 @@ export async function GET(_req: NextRequest) {
 
     const data = await res.json();
 
-    console.log(apiKey);
-
     if (!res.ok || !data.userInfo) {
       throw new Error(data.message || "Error loading user data");
     }

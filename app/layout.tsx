@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import "./style/globals.css";
 import { UserDataProvider } from "./context/UserDataProvider";
-import { font } from "./style/fonts/localFonts";
+import { font } from "./style/localFonts";
 import Script from "next/script";
 import { Analytics } from "@vercel/analytics/next";
 
@@ -34,14 +34,14 @@ export default function RootLayout({
         <link rel="dns-prefetch" href="https://va.vercel-scripts.com" />
         <link
           rel="preload"
-          href="./style/fonts/font.woff2"
+          href="/fonts/font.woff2"
           as="font"
           type="font/woff2"
           crossOrigin=""
         />
         <link
           rel="preload"
-          href="./style/fonts/title-font.woff2"
+          href="/fonts/title-font.woff2"
           as="font"
           type="font/woff2"
           crossOrigin=""

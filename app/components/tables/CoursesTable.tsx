@@ -9,7 +9,7 @@ import TableRow from "@mui/material/TableRow";
 import TableSortLabel from "@mui/material/TableSortLabel";
 import { TableVirtuoso, TableComponents } from "react-virtuoso";
 import { ICourse } from "@/app/interfaces/IUserData";
-import { titleFont, font } from "@/app/style/fonts/localFonts";
+import { titleFont, font } from "@/app/style/localFonts";
 
 const columns = [
   { dataKey: "name", label: "Name", width: "30%" },

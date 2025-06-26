@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { titleFont } from "../style/fonts/localFonts";
+import { titleFont } from "../style/localFonts";
 
 export const HomeSectionText = styled.p`
   font-size: 3rem;
