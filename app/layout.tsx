@@ -34,14 +34,14 @@ export default function RootLayout({
         <link rel="dns-prefetch" href="https://va.vercel-scripts.com" />
         <link
           rel="preload"
-          href="./style/fonts/font.ttf"
+          href="./style/fonts/font.woff2"
           as="font"
           type="font/woff2"
           crossOrigin=""
         />
         <link
           rel="preload"
-          href="./style/fonts/title-font.ttf"
+          href="./style/fonts/title-font.woff2"
           as="font"
           type="font/woff2"
           crossOrigin=""
