@@ -3,6 +3,7 @@ import "./style/globals.css";
 import { UserDataProvider } from "./context/UserDataProvider";
 import { font } from "./style/fonts/localFonts";
 import Script from "next/script";
+import { Analytics } from "@vercel/analytics/next";
 
 export const metadata: Metadata = {
   title: "Managed Portfolio Website",
@@ -17,6 +18,7 @@ export default function RootLayout({
     <html lang="en" className={font.className}>
       <body>
         <UserDataProvider>{children}</UserDataProvider>
+        <Analytics />
         <Script
           src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"
           strategy="afterInteractive"
