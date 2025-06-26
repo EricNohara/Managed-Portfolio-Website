@@ -6,7 +6,7 @@ import Script from "next/script";
 import { Analytics } from "@vercel/analytics/next";
 
 export const metadata: Metadata = {
-  title: "Managed Portfolio Website",
+  title: "Eric Nohara-LeClair",
   description:
     "Portfolio website managed by the portfolio website manager project",
 };
@@ -46,6 +46,25 @@ export default function RootLayout({
           type="font/woff2"
           crossOrigin=""
         />
+        {/* favicons */}
+        <link
+          rel="apple-touch-icon"
+          sizes="180x180"
+          href="/icons/apple-touch-icon.png"
+        />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="32x32"
+          href="/icons/favicon-32x32.png"
+        />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="16x16"
+          href="/icons/favicon-16x16.png"
+        />
+        <link rel="manifest" href="/site.webmanifest" />
       </head>
       <body>
         <UserDataProvider>{children}</UserDataProvider>
