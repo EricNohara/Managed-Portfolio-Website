@@ -34,22 +34,22 @@ const HomeSectionIconsContainer = styled.div`
 const socialLinks = [
   {
     key: "linkedin_url",
-    label: "LinkedIn",
+    label: "Eric Nohara-LeClair on LinkedIn",
     icon: <LinkedInIcon sx={{ fontSize: "3.25rem" }} />,
   },
   {
     key: "github_url",
-    label: "GitHub",
+    label: "Eric Nohara-LeClair on GitHub",
     icon: <GitHubIcon sx={{ fontSize: "3.25rem" }} />,
   },
   {
     key: "instagram_url",
-    label: "Instagram",
+    label: "Eric Nohara-LeClair on Instagram",
     icon: <InstagramIcon sx={{ fontSize: "3.25rem" }} />,
   },
   {
     key: "email",
-    label: "Email",
+    label: "Eric Nohara-LeClair on Email",
     icon: <EmailIcon sx={{ fontSize: "3.25rem" }} />,
   },
 ];
@@ -120,7 +120,10 @@ export default function HomeSection() {
               Hey I&apos;m{" "}
               <HomeSectionNameText>
                 {userData.linkedin_url ? (
-                  <ExternalLink href={userData.linkedin_url}>
+                  <ExternalLink
+                    href={userData.linkedin_url}
+                    label="Eric Nohara-LeClair on LinkedIn"
+                  >
                     {userData.name}
                   </ExternalLink>
                 ) : (

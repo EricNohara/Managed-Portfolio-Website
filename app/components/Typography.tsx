@@ -103,7 +103,7 @@ export const ExperienceSectionName = styled.h2`
   }
 `;
 
-export const ExperienceSectionDate = styled.h4`
+export const ExperienceSectionDate = styled.p`
   font-size: 1rem;
   color: var(--txtdarkgrey);
   font-style: italic;

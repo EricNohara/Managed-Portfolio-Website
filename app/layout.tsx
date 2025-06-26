@@ -16,6 +16,37 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en" className={font.className}>
+      <head>
+        <link
+          rel="preconnect"
+          href="https://jfsetifsqcpkwdtcrhdt.supabase.co"
+          crossOrigin=""
+        />
+        <link
+          rel="dns-prefetch"
+          href="https://jfsetifsqcpkwdtcrhdt.supabase.co"
+        />
+        <link
+          rel="preconnect"
+          href="https://va.vercel-scripts.com"
+          crossOrigin=""
+        />
+        <link rel="dns-prefetch" href="https://va.vercel-scripts.com" />
+        <link
+          rel="preload"
+          href="./style/fonts/font.ttf"
+          as="font"
+          type="font/woff2"
+          crossOrigin=""
+        />
+        <link
+          rel="preload"
+          href="./style/fonts/title-font.ttf"
+          as="font"
+          type="font/woff2"
+          crossOrigin=""
+        />
+      </head>
       <body>
         <UserDataProvider>{children}</UserDataProvider>
         <Analytics />

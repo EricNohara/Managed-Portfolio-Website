@@ -27,7 +27,7 @@ type SocialIconLinkProps = {
 function SocialIconLink({ href, label, children }: SocialIconLinkProps) {
   return (
     <Icon>
-      <ExternalLink href={href} aria-label={label}>
+      <ExternalLink href={href} label={label}>
         {children}
       </ExternalLink>
     </Icon>

@@ -198,13 +198,12 @@ export default function ProjectsSection() {
               [...userData.projects]
                 .sort((a, b) => b.name.length - a.name.length)
                 .map((proj) => (
-                  <ScrollAnimationLeft key={proj.id}>
-                    <ProjectListItem
-                      onClick={() => setSelectedProject(proj)}
-                    >
-                      {proj.name}
-                    </ProjectListItem>
-                  </ScrollAnimationLeft>
+                  <ProjectListItem
+                    key={proj.id}
+                    onClick={() => setSelectedProject(proj)}
+                  >
+                    <ScrollAnimationLeft>{proj.name}</ScrollAnimationLeft>
+                  </ProjectListItem>
                 ))}
           </ProjectList>
         </ProjectListContainer>
