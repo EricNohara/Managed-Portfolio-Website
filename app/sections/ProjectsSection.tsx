@@ -71,7 +71,7 @@ const TitleLinksContainer = styled.div`
   gap: 2rem;
   padding-right: 2rem;
 
-  @media (max-width: 600px) {
+  @media (max-width: 1000px) {
     flex-direction: column;
     align-items: center;
   }
