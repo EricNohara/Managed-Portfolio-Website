@@ -19,6 +19,12 @@ export const HomeSectionText = styled.p`
 
 export const HomeSectionNameText = styled.span`
   color: var(--secondary);
+  font-weight: bold;
+  transition: text-shadow 0.1s ease;
+
+  &:hover {
+    text-shadow: 0 0 30px var(--secondary);
+  }
 `;
 
 export const SectionTitleText = styled.h1.attrs(() => ({
@@ -57,15 +63,15 @@ export const InfoSubtitle = styled.h2.attrs(() => ({
 `;
 
 export const AboutDescription = styled.h3`
-  font-size: 1.25rem;
+  font-size: 1.15rem;
   font-style: italic;
   color: var(--txtdarkgrey);
 
   @media (max-width: 900px) {
-    font-size: 1.15rem;
+    font-size: 1rem;
   }
   @media (max-width: 600px) {
-    font-size: 1rem;
+    font-size: 0.9rem;
   }
   @media (max-width: 400px) {
     font-size: 0.8rem;

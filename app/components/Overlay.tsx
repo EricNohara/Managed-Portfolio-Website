@@ -45,7 +45,7 @@ export const Modal = styled.div`
   width: 60vw;
   max-height: 80vh;
   overflow-y: auto;
-  border: 2px solid var(--dsecondary);
+  border: 3px solid var(--dsecondary);
   z-index: 100000;
   animation: ${fadeIn} 0.35s cubic-bezier(0.4, 0, 0.2, 1);
   backdrop-filter: blur(2px);

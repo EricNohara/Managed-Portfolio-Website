@@ -10,6 +10,7 @@ import PhoneIcon from "@mui/icons-material/Phone";
 import EmailIcon from "@mui/icons-material/Email";
 import formatPhoneNumber from "@/utils/FormatPhoneNumber";
 import { useEffect, useState } from "react";
+import { Avatar } from "@mui/material";
 
 import {
   InfoSubtitle,
@@ -64,6 +65,13 @@ const AboutNameAndDescriptionContainer = styled.div`
   background-color: var(--dblue);
   border-radius: 10px;
   box-sizing: border-box;
+
+  @media (max-width: 900px) {
+    display: grid;
+    grid-template-columns: 70% 30%;
+    align-items: center;
+    gap: 1.5em;
+  }
 `;
 
 const AboutInformationFullWidthItem = styled.div`
@@ -80,10 +88,10 @@ const AboutInformationFullWidthItem = styled.div`
 
 const FormattedPhoneIcon = styled(PhoneIcon)`
   @media (max-width: 900px) {
-    font-size: 1.9rem;
+    font-size: 1.5rem;
   }
-  @media (max-width: 600px) {
-    font-size: 1rem;
+  @media (max-width: 700px) {
+    font-size: 1.1rem;
   }
   @media (max-width: 400px) {
     font-size: 0.8rem;
@@ -92,13 +100,23 @@ const FormattedPhoneIcon = styled(PhoneIcon)`
 
 const FormattedEmailIcon = styled(EmailIcon)`
   @media (max-width: 900px) {
-    font-size: 1.9rem;
+    font-size: 1.5rem;
   }
-  @media (max-width: 600px) {
-    font-size: 1rem;
+  @media (max-width: 700px) {
+    font-size: 1.1rem;
   }
   @media (max-width: 400px) {
     font-size: 0.8rem;
+  }
+`;
+
+const ContactDiv = styled.div`
+  display: flex;
+  width: 100%;
+  gap: 5%;
+
+  @media (max-width: 600px) {
+    flex-direction: column;
   }
 `;
 
@@ -124,41 +142,64 @@ export default function AboutSection() {
     >
       <SectionTitle>About Me</SectionTitle>
       <AboutInformationPanel>
-        <ScrollAnimation>
-          <AboutInformationItem>
-            {userData && userData.portrait_url && (
+        {userData && userData.portrait_url && isWide && (
+          <ScrollAnimation>
+            <AboutInformationItem>
               <ImageCard
                 imageUrl={userData.portrait_url}
                 flipped={true}
                 link={userData.linkedin_url ? userData.linkedin_url : ""}
               />
-            )}
-          </AboutInformationItem>
-        </ScrollAnimation>
+            </AboutInformationItem>
+          </ScrollAnimation>
+        )}
         <AboutInformationItem>
           <AboutNameAndBioContainer>
             <ScrollAnimation style={{ width: "100%", height: "100%" }}>
               <AboutNameAndDescriptionContainer>
-                <InfoSubtitle>{userData && userData.name}</InfoSubtitle>
-                <SplitContainer>
+                <div>
+                  <InfoSubtitle>{userData && userData.name}</InfoSubtitle>
+                  <SplitContainer>
+                    <ContactDiv>
+                      <AboutDescription>
+                        <FormattedEmailIcon /> {userData && userData.email}
+                      </AboutDescription>
+                      <AboutDescription>
+                        <FormattedPhoneIcon />{" "}
+                        {userData &&
+                          userData.phone_number &&
+                          formatPhoneNumber(userData.phone_number)}
+                      </AboutDescription>
+                    </ContactDiv>
+                  </SplitContainer>
                   <AboutDescription>
-                    <FormattedEmailIcon /> {userData && userData.email}
+                    {userData && userData.location}
                   </AboutDescription>
-                  <p
-                    style={{ fontSize: "1.4rem", color: "var(--txtdarkgrey)" }}
-                  >
-                    |
-                  </p>
-                  <AboutDescription>
-                    <FormattedPhoneIcon />{" "}
-                    {userData &&
-                      userData.phone_number &&
-                      formatPhoneNumber(userData.phone_number)}
-                  </AboutDescription>
-                </SplitContainer>
-                <AboutDescription>
-                  {userData && userData.location}
-                </AboutDescription>
+                </div>
+                {!isWide && userData?.portrait_url && (
+                  <Avatar
+                    src={userData.portrait_url}
+                    sx={{
+                      width: 150,
+                      height: 150,
+                      border: "5px solid var(--secondary)",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      margin: 0,
+                      "@media (max-width: 700px)": {
+                        width: 100,
+                        height: 100,
+                        border: "3px solid var(--secondary)",
+                      },
+                      "@media (max-width: 500px)": {
+                        width: 70,
+                        height: 70,
+                        border: "2px solid var(--secondary)",
+                      },
+                    }}
+                  />
+                )}
               </AboutNameAndDescriptionContainer>
             </ScrollAnimation>
             <ScrollAnimation style={{ width: "100%", height: "100%" }}>
