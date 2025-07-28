@@ -3,11 +3,12 @@ import { ExternalLink } from "./Links";
 
 const Icon = styled.p`
   color: var(--txtgrey);
-  transition: color 0.2s ease;
+  transition: 0.2s ease;
 
   &:hover {
     color: var(--secondary);
-    transition: color 0.2s ease;
+    transform: scale(1.1);
+    transition: 0.2s ease;
     cursor: pointer;
   }
 
