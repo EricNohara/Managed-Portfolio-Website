@@ -135,7 +135,7 @@ export default function HomeSection() {
           )}
           {userData && userData.current_position && (
             <HomeSectionText>
-              {`I&apos;m a ${userData.current_position.toLowerCase()}.`}
+              {`I'm a ${userData.current_position.toLowerCase()}.`}
             </HomeSectionText>
           )}
         </HomeSectionTextContainer>
