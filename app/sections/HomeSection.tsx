@@ -133,9 +133,11 @@ export default function HomeSection() {
               .
             </HomeSectionText>
           )}
-          <HomeSectionText>
-            I&apos;m a software developer and college student.
-          </HomeSectionText>
+          {userData && userData.current_position && (
+            <HomeSectionText>
+              {`I&apos;m a ${userData.current_position.toLowerCase()}.`}
+            </HomeSectionText>
+          )}
         </HomeSectionTextContainer>
         <ScrollButton targetId="about">Find Out More</ScrollButton>
         <HomeSectionIconsContainer>

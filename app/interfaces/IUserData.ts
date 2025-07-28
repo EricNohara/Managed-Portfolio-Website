@@ -12,6 +12,7 @@ export interface IUserData {
   instagram_url: string | null;
   facebook_url: string | null;
   bio: string | null;
+  current_position: string | null;
   skills: IUserSkill[];
   experiences: IUserExperience[];
   projects: IUserProject[];
