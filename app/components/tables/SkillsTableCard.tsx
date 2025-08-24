@@ -10,42 +10,58 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import TableSortLabel from "@mui/material/TableSortLabel";
 import { TableVirtuoso, TableComponents } from "react-virtuoso";
+import { titleFont, font } from "@/app/style/localFonts";
 
 const columns = [
-  { dataKey: "name", label: "Name", width: 160 },
-  { dataKey: "proficiency", label: "Proficiency (0-10)", width: 160 },
-  { dataKey: "years_of_experience", label: "Years of Experience", width: 180 },
+  { dataKey: "name", label: "Name", width: "32%" },
+  { dataKey: "proficiency", label: "Proficiency (0-10)", width: "32%" },
+  {
+    dataKey: "years_of_experience",
+    label: "Years of Experience",
+    width: "36%",
+  },
 ] as const;
 
-type Column = (typeof columns)[number];
 type Skill = IUserSkill;
 
+const Scroller = React.forwardRef<HTMLDivElement>((props, ref) => (
+  <TableContainer
+    {...props}
+    ref={ref}
+    className="redScrollbar"
+    sx={{
+      backgroundColor: "var(--dblue)",
+      maxHeight: "100%",
+    }}
+  />
+));
+Scroller.displayName = "VirtuosoScroller";
+
+const TableComp = (props: React.ComponentProps<typeof Table>) => (
+  <Table
+    {...props}
+    stickyHeader
+    sx={{ borderCollapse: "separate", tableLayout: "fixed" }}
+  />
+);
+TableComp.displayName = "VirtuosoTable";
+
+const TableHeadComp = React.forwardRef<HTMLTableSectionElement>(
+  (props, ref) => <TableHead {...props} ref={ref} />
+);
+TableHeadComp.displayName = "VirtuosoTableHead";
+
+const TableBodyComp = React.forwardRef<HTMLTableSectionElement>(
+  (props, ref) => <TableBody {...props} ref={ref} />
+);
+TableBodyComp.displayName = "VirtuosoTableBody";
+
 const VirtuosoTableComponents: TableComponents<Skill> = {
-  Scroller: React.forwardRef<HTMLDivElement>((props, ref) => (
-    <TableContainer
-      {...props}
-      ref={ref}
-      className="redScrollbar"
-      sx={{
-        backgroundColor: "var(--dblue)",
-        maxHeight: "100%",
-      }}
-    />
-  )),
-  Table: (props) => (
-    <Table
-      {...props}
-      stickyHeader
-      sx={{ borderCollapse: "separate", tableLayout: "fixed" }}
-    />
-  ),
-  TableHead: React.forwardRef<HTMLTableSectionElement>((props, ref) => (
-    <TableHead {...props} ref={ref} />
-  )),
+  Scroller,
+  Table: TableComp,
+  TableHead: TableHeadComp,
   TableRow,
-  TableBody: React.forwardRef<HTMLTableSectionElement>((props, ref) => (
-    <TableBody {...props} ref={ref} />
-  )),
+  TableBody: TableBodyComp,
 };
 
 export default function SkillsTableCard() {
@@ -83,6 +99,7 @@ export default function SkillsTableCard() {
               color: "white",
               fontWeight: "bold",
               background: "var(--bblue)",
+              fontFamily: titleFont.style.fontFamily,
             }}
             sortDirection={orderBy === column.dataKey ? order : false}
           >
@@ -92,6 +109,12 @@ export default function SkillsTableCard() {
               onClick={() => handleRequestSort(column.dataKey)}
               sx={{
                 color: "#fff",
+                fontFamily: titleFont.style.fontFamily,
+                fontSize: {
+                  xs: "0.9rem",
+                  sm: "1rem",
+                  md: "1.1rem",
+                },
                 "&.Mui-active": { color: "#fff" },
                 "& .MuiTableSortLabel-icon": { color: "#fff !important" },
                 "&:hover": {
@@ -117,7 +140,19 @@ export default function SkillsTableCard() {
           <TableCell
             key={column.dataKey}
             align="left"
-            style={{ color: "white", background: "var(--dblue)" }}
+            sx={{
+              color: "white",
+              background: "var(--dblue)",
+              fontFamily: font.style.fontFamily,
+              fontSize: {
+                xs: "0.85rem", // <600px
+                sm: "0.9rem", // 600px+
+                md: "0.95rem", // 900px+
+              },
+              whiteSpace: "nowrap",
+              overflow: "hidden",
+              textOverflow: "ellipsis",
+            }}
           >
             {skill[column.dataKey] ?? "-"}
           </TableCell>
@@ -132,7 +167,7 @@ export default function SkillsTableCard() {
         height: 425,
         width: "100%",
         background: "var(--dblue)",
-        border: "2px solid var(--secondary)",
+        border: "2px solid var(--dsecondary)",
       }}
     >
       <TableVirtuoso

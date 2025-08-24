@@ -5,7 +5,8 @@ import formatDate from "@/utils/FormatDate";
 import {
   ExperienceSectionDate,
   ExperienceSectionName,
-  ExperienceSubtitle,
+  AccordianSubtitle,
+  NormalText,
 } from "../Typography";
 import { ExperiencePairContainer } from "../Containers";
 import Accordion from "@mui/material/Accordion";
@@ -34,7 +35,7 @@ export default function WorkCard() {
       {userData &&
         userData.experiences &&
         userData.experiences.map((exp) => (
-          <div style={{ marginBottom: "2rem" }} key={exp.company}>
+          <div key={exp.company}>
             <Accordion
               sx={{
                 width: "100%",
@@ -61,7 +62,7 @@ export default function WorkCard() {
                 <div style={{ width: "100%" }}>
                   <ExperienceSectionName>{exp.company}</ExperienceSectionName>
                   <ExperiencePairContainer>
-                    <ExperienceSubtitle>{exp.job_title}</ExperienceSubtitle>
+                    <AccordianSubtitle>{exp.job_title}</AccordianSubtitle>
                     <ExperienceSectionDate>
                       {exp.date_start && exp.date_end
                         ? `${formatDate(exp.date_start)} - ${formatDate(
@@ -75,13 +76,11 @@ export default function WorkCard() {
                 </div>
               </AccordionSummary>
               <AccordionDetails>
-                {exp.job_description && exp.job_description !== "" ? (
-                  <div style={{ color: "var(--txtgrey" }}>
-                    {exp.job_description}
-                  </div>
-                ) : (
-                  <i>No description provided.</i>
-                )}
+                <NormalText>
+                  {exp.job_description && exp.job_description !== ""
+                    ? exp.job_description
+                    : "No description provided."}
+                </NormalText>
               </AccordionDetails>
             </Accordion>
           </div>

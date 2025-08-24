@@ -5,27 +5,38 @@ import { useUserDataContext } from "../context/UserDataProvider";
 import { IUserData } from "../interfaces/IUserData";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
+import { titleFont } from "../style/localFonts";
 
-const NavBar = styled.nav`
+const NavBar = styled.nav.attrs(() => ({
+  className: titleFont.className,
+}))`
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 1%;
-  background-color: #3d3d3d;
+  background-color: rgba(49, 49, 49, 0.99);
   position: sticky;
   top: 0;
-  z-index: 1000;
+  z-index: 100;
 `;
 
 const NavList = styled.ul`
   display: flex;
-  gap: 15%;
+  gap: 5vw;
   justify-content: center;
   list-style: none;
+  flex-wrap: wrap;
 `;
 
 const NavListItem = styled.li`
   font-size: 1.25rem;
+
+  @media (max-width: 900px) {
+    font-size: 1.1rem;
+  }
+  @media (max-width: 600px) {
+    font-size: 1rem;
+  }
 `;
 
 const NavLink = styled(Link)<{ $active?: boolean }>`

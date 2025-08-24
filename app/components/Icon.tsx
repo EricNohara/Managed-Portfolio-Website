@@ -3,12 +3,19 @@ import { ExternalLink } from "./Links";
 
 const Icon = styled.p`
   color: var(--txtgrey);
-  transition: color 0.2s ease;
+  transition: 0.2s ease;
 
   &:hover {
     color: var(--secondary);
-    transition: color 0.2s ease;
+    transform: scale(1.1);
+    transition: 0.2s ease;
     cursor: pointer;
+  }
+
+  @media (max-width: 600px) {
+    svg {
+      font-size: 2rem;
+    }
   }
 `;
 
@@ -21,7 +28,7 @@ type SocialIconLinkProps = {
 function SocialIconLink({ href, label, children }: SocialIconLinkProps) {
   return (
     <Icon>
-      <ExternalLink href={href} aria-label={label}>
+      <ExternalLink href={href} label={label}>
         {children}
       </ExternalLink>
     </Icon>

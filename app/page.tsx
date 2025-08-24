@@ -8,10 +8,7 @@ import AboutSection from "./sections/AboutSection";
 import ExperienceSection from "./sections/ExperienceSection";
 import ProjectsSection from "./sections/ProjectsSection";
 import ContactSection from "./sections/ContactSection";
-import {
-  HomeSectionContainer,
-  SectionContainer,
-} from "./components/Containers";
+import { HomeSectionContainer } from "./components/Containers";
 import LoadingSpinner from "./components/LoadingSpinner";
 import Footer from "./components/Footer";
 
@@ -20,13 +17,23 @@ export default function Home() {
 
   if (!userData)
     return (
-      <HomeSectionContainer>
+      <HomeSectionContainer
+        style={{
+          background:
+            "radial-gradient(circle at center, var(--dblue2) 20%, var(--black) 100%)",
+        }}
+      >
         <LoadingSpinner />
       </HomeSectionContainer>
     );
 
   return (
-    <div>
+    <div
+      style={{
+        width: "100%",
+        maxWidth: "100%",
+      }}
+    >
       <HomeSection />
       <Navigation />
       <AboutSection />
@@ -34,8 +41,6 @@ export default function Home() {
       <ProjectsSection />
       <ContactSection />
       <Footer />
-      {/* <h1>{userData.name}</h1>
-      <p>{userData.email}</p> */}
     </div>
   );
 }

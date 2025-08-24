@@ -11,6 +11,8 @@ export interface IUserData {
   transcript_url: string | null;
   instagram_url: string | null;
   facebook_url: string | null;
+  bio: string | null;
+  current_position: string | null;
   skills: IUserSkill[];
   experiences: IUserExperience[];
   projects: IUserProject[];
@@ -32,6 +34,7 @@ export interface IUserExperience {
 }
 
 export interface IUserProject {
+  id: number;
   name: string;
   date_start: string;
   date_end: string;

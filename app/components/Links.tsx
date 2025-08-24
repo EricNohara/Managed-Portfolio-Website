@@ -2,12 +2,24 @@ import React from "react";
 
 type ExternalLinkProps = React.AnchorHTMLAttributes<HTMLAnchorElement> & {
   href: string;
+  label?: string;
   children: React.ReactNode;
 };
 
-function ExternalLink({ href, children, ...props }: ExternalLinkProps) {
+function ExternalLink({
+  href,
+  label = "",
+  children,
+  ...props
+}: ExternalLinkProps) {
   return (
-    <a href={href} target="_blank" rel="noopener noreferrer" {...props}>
+    <a
+      href={href}
+      aria-label={label}
+      target="_blank"
+      rel="noopener noreferrer"
+      {...props}
+    >
       {children}
     </a>
   );

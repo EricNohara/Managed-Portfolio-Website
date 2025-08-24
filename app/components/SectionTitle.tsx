@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { ReactNode, useEffect, useRef, useState } from "react";
-import { SectionTitleText } from "./Typography";
+import { SectionTitleText, NormalText } from "./Typography";
+import { ScrollAnimation } from "./ScrollAnimation";
 
 const SectionTitleContainer = styled.div`
   display: flex;
@@ -10,16 +11,24 @@ const SectionTitleContainer = styled.div`
   padding: 2%;
 `;
 
+const TitleBlock = styled.div`
+  display: inline-block;
+  width: fit-content;
+  text-align: center;
+`;
+
 const SectionTitleDivider = styled.div.withConfig({
   shouldForwardProp: (prop) => prop !== "expanded",
 })<{ expanded: boolean }>`
   background-color: var(--secondary);
   height: 5px;
-  width: ${({ expanded }) => (expanded ? "100%" : "0%")};
+  width: 100%;
   border-radius: 2px;
   margin-bottom: 2rem;
   margin-top: 1rem;
-  transition: width 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: scaleX(${({ expanded }) => (expanded ? 1 : 0)});
+  transform-origin: center;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 `;
 
 type SectionTitleProps = {
@@ -46,12 +55,18 @@ export default function SectionTitle({
   }, []);
 
   return (
-    <SectionTitleContainer>
-      <SectionTitleText>{children}</SectionTitleText>
-      {subtitle && (
-        <p style={{ fontSize: "1.2rem", color: "grey" }}>{subtitle}</p>
-      )}
-      <SectionTitleDivider ref={dividerRef} expanded={expanded} />
-    </SectionTitleContainer>
+    <ScrollAnimation style={{ width: "100%" }}>
+      <SectionTitleContainer>
+        <TitleBlock>
+          <SectionTitleText>{children}</SectionTitleText>
+          {subtitle && (
+            <NormalText style={{ color: "var(--txtdarkgrey)" }}>
+              {subtitle}
+            </NormalText>
+          )}
+          <SectionTitleDivider ref={dividerRef} expanded={expanded} />
+        </TitleBlock>
+      </SectionTitleContainer>
+    </ScrollAnimation>
   );
 }

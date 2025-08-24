@@ -6,6 +6,14 @@ export const HomeSectionContainer = styled.section`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+
+  @media (max-width: 900px) {
+    padding: 2rem 0;
+  }
+
+  @media (max-width: 600px) {
+    padding: 1rem 0;
+  }
 `;
 
 export const SectionContainer = styled.section`
@@ -54,6 +62,10 @@ export const ProjectInfoContainer = styled.div`
   width: 100%;
   padding: 0 2rem 2rem 2rem;
   gap: 1.5rem;
+
+  @media (max-width: 600px) {
+    padding: 0 1rem;
+  }
 `;
 
 export const ProjectSubtitleContainer = styled.div`
@@ -75,4 +87,11 @@ export const ExperienceTitleContainer = styled.div`
   justify-content: center;
   gap: 2rem;
   margin-bottom: 1rem;
+`;
+
+export const SplitContainer = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  width: 100%;
 `;

@@ -1,50 +1,63 @@
 import styled from "styled-components";
 import React, { useState } from "react";
 import { Alert, Snackbar } from "@mui/material";
+import { ScrollAnimation } from "../components/ScrollAnimation";
 
 const ContactFormContainer = styled.form`
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: var(--dblue2);
   border-radius: 10px;
-  width: 80%;
+  width: 70%;
   height: 500px;
   margin-bottom: 60px;
   padding: 10%;
-  gap: 2rem;
+  gap: 1.25rem;
+
+  @media (max-width: 600px) {
+    width: 90%;
+    padding: 2.5%;
+    gap: 0.75rem;
+    height: 400px;
+  }
 `;
 
 const ContactTextInput = styled.input`
   padding: 1rem;
   font-size: 1.1rem;
-  background-color: var(--dblue);
+  background-color: var(--dblue2);
   color: var(--txtgrey); // Use 'color' instead of 'text-color'
   width: 100%;
-  border-radius: 5px;
-  border: 1px solid var(--lblue);
+  border-radius: 10px;
   outline: none;
-  transition: border 0.2s;
   &:focus {
-    border: 1.5px solid var(--secondary);
+    border: 2px solid var(--secondary);
+  }
+
+  @media (max-width: 600px) {
+    font-size: 0.8rem;
+    padding: 0.75rem;
   }
 `;
 
 const ContactTextArea = styled.textarea`
   padding: 1rem;
   font-size: 1.1rem;
-  background-color: var(--dblue);
+  background-color: var(--dblue2);
   color: var(--txtgrey); // Use 'color' instead of 'text-color'
   width: 100%;
   min-height: 200px;
-  border-radius: 5px;
-  border: 1px solid var(--lblue);
+  border-radius: 10px;
   resize: none; // Prevents resizing
   outline: none;
-  transition: border 0.2s;
   &:focus {
-    border: 1.5px solid var(--secondary);
+    border: 2px solid var(--secondary);
+  }
+
+  @media (max-width: 600px) {
+    font-size: 0.8rem;
+    padding: 0.75rem;
   }
 `;
 
@@ -53,16 +66,22 @@ const ContactButton = styled.button`
   padding: 1rem;
   border: 2px solid var(--secondary);
   color: var(--secondary);
-  border-radius: 5px;
+  border-radius: 10px;
   width: 100%;
   text-transform: uppercase;
-  transition: 0.2s ease;
+  transition: 0.3s ease;
+  background-color: var(--dblue2);
 
   &:hover {
-    background-color: var(--secondary);
+    background-color: var(--dsecondary);
     color: white;
-    transition: 0.2s ease;
+    transition: 0.3s ease;
     cursor: pointer;
+  }
+
+  @media (max-width: 600px) {
+    font-size: 0.8rem;
+    padding: 0.75rem;
   }
 `;
 
@@ -114,29 +133,37 @@ export default function ContactForm() {
   return (
     <>
       <ContactFormContainer onSubmit={handleSubmit}>
-        <ContactTextInput
-          type="text"
-          placeholder="Your Name Here"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-          required
-        />
-        <ContactTextInput
-          type="text"
-          placeholder="Your Email Here"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          required
-        />
-        <ContactTextArea
-          placeholder="Your Message Here"
-          value={message}
-          onChange={(e) => setMessage(e.target.value)}
-          required
-        />
-        <ContactButton type="submit" disabled={status === "sending"}>
-          {status === "sending" ? "Sending..." : "Send Email"}
-        </ContactButton>
+        <ScrollAnimation style={{ width: "100%" }}>
+          <ContactTextInput
+            type="text"
+            placeholder="Your Name Here"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            required
+          />
+        </ScrollAnimation>
+        <ScrollAnimation style={{ width: "100%" }}>
+          <ContactTextInput
+            type="text"
+            placeholder="Your Email Here"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+          />
+        </ScrollAnimation>
+        <ScrollAnimation style={{ width: "100%" }}>
+          <ContactTextArea
+            placeholder="Your Message Here"
+            value={message}
+            onChange={(e) => setMessage(e.target.value)}
+            required
+          />
+        </ScrollAnimation>
+        <ScrollAnimation style={{ width: "100%" }}>
+          <ContactButton type="submit" disabled={status === "sending"}>
+            {status === "sending" ? "Sending..." : "Send"}
+          </ContactButton>
+        </ScrollAnimation>
       </ContactFormContainer>
       <Snackbar
         open={open && status === "success"}
